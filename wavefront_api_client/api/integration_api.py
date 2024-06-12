@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Wavefront REST API Documentation
+    Tanzu Observability REST API Documentation
 
-    <p>The Wavefront REST API enables you to interact with Wavefront servers using standard REST API tools. You can use the REST API to automate commonly executed operations such as automatically tagging sources.</p><p>When you make REST API calls outside the Wavefront REST API documentation you must add the header \"Authorization: Bearer &lt;&lt;API-TOKEN&gt;&gt;\" to your HTTP requests.</p>  # noqa: E501
+    <p>The REST API enables you to interact with the Tanzu Observability service by using standard REST API tools. You can use the REST API to automate commonly executed operations, for example to tag sources automatically.</p><p>When you make REST API calls outside the REST API documentation UI, to authenticate to the service, you must use an API token associated with a user account or a service account. For information on how to get the API token and examples, see <a href=\"http://docs.wavefront.com/using_wavefront_api.html\">Use the Tanzu Observability REST API.</a></p>  # noqa: E501
 
     OpenAPI spec version: v2
     Contact: chitimba@wavefront.com
@@ -34,7 +34,7 @@ class IntegrationApi(object):
         self.api_client = api_client
 
     def get_all_integration(self, **kwargs):  # noqa: E501
-        """Gets a flat list of all Wavefront integrations available, along with their status  # noqa: E501
+        """Gets a flat list of all Tanzu Observability integrations available, along with their status  # noqa: E501
 
           # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -44,7 +44,8 @@ class IntegrationApi(object):
 
         :param async_req bool
         :param int offset:
-        :param int limit:
+        :param int limit: Limit the number of queried integrations to reduce the response size
+        :param bool exclude_dashboard: Whether to exclude information on dashboards, default is set to false
         :return: ResponseContainerPagedIntegration
                  If the method is called asynchronously,
                  returns the request thread.
@@ -57,7 +58,7 @@ class IntegrationApi(object):
             return data
 
     def get_all_integration_with_http_info(self, **kwargs):  # noqa: E501
-        """Gets a flat list of all Wavefront integrations available, along with their status  # noqa: E501
+        """Gets a flat list of all Tanzu Observability integrations available, along with their status  # noqa: E501
 
           # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -67,13 +68,14 @@ class IntegrationApi(object):
 
         :param async_req bool
         :param int offset:
-        :param int limit:
+        :param int limit: Limit the number of queried integrations to reduce the response size
+        :param bool exclude_dashboard: Whether to exclude information on dashboards, default is set to false
         :return: ResponseContainerPagedIntegration
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['offset', 'limit']  # noqa: E501
+        all_params = ['offset', 'limit', 'exclude_dashboard']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -98,6 +100,8 @@ class IntegrationApi(object):
             query_params.append(('offset', params['offset']))  # noqa: E501
         if 'limit' in params:
             query_params.append(('limit', params['limit']))  # noqa: E501
+        if 'exclude_dashboard' in params:
+            query_params.append(('excludeDashboard', params['exclude_dashboard']))  # noqa: E501
 
         header_params = {}
 
@@ -129,7 +133,7 @@ class IntegrationApi(object):
             collection_formats=collection_formats)
 
     def get_all_integration_in_manifests(self, **kwargs):  # noqa: E501
-        """Gets all Wavefront integrations as structured in their integration manifests, along with their status and content  # noqa: E501
+        """Gets all Tanzu Observability integrations as structured in their integration manifests, along with their status and content  # noqa: E501
 
           # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -150,7 +154,7 @@ class IntegrationApi(object):
             return data
 
     def get_all_integration_in_manifests_with_http_info(self, **kwargs):  # noqa: E501
-        """Gets all Wavefront integrations as structured in their integration manifests, along with their status and content  # noqa: E501
+        """Gets all Tanzu Observability integrations as structured in their integration manifests, along with their status and content  # noqa: E501
 
           # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -216,7 +220,7 @@ class IntegrationApi(object):
             collection_formats=collection_formats)
 
     def get_all_integration_in_manifests_min(self, **kwargs):  # noqa: E501
-        """Gets all Wavefront integrations as structured in their integration manifests.  # noqa: E501
+        """Gets all Tanzu Observability integrations as structured in their integration manifests.  # noqa: E501
 
           # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -237,7 +241,7 @@ class IntegrationApi(object):
             return data
 
     def get_all_integration_in_manifests_min_with_http_info(self, **kwargs):  # noqa: E501
-        """Gets all Wavefront integrations as structured in their integration manifests.  # noqa: E501
+        """Gets all Tanzu Observability integrations as structured in their integration manifests.  # noqa: E501
 
           # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -303,7 +307,7 @@ class IntegrationApi(object):
             collection_formats=collection_formats)
 
     def get_all_integration_statuses(self, **kwargs):  # noqa: E501
-        """Gets the status of all Wavefront integrations  # noqa: E501
+        """Gets the status of all Tanzu Observability integrations  # noqa: E501
 
           # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -324,7 +328,7 @@ class IntegrationApi(object):
             return data
 
     def get_all_integration_statuses_with_http_info(self, **kwargs):  # noqa: E501
-        """Gets the status of all Wavefront integrations  # noqa: E501
+        """Gets the status of all Tanzu Observability integrations  # noqa: E501
 
           # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -485,7 +489,7 @@ class IntegrationApi(object):
             collection_formats=collection_formats)
 
     def get_integration(self, id, **kwargs):  # noqa: E501
-        """Gets a single Wavefront integration by its id, along with its status  # noqa: E501
+        """Gets a single Tanzu Observability integration by its id, along with its status  # noqa: E501
 
           # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -508,7 +512,7 @@ class IntegrationApi(object):
             return data
 
     def get_integration_with_http_info(self, id, **kwargs):  # noqa: E501
-        """Gets a single Wavefront integration by its id, along with its status  # noqa: E501
+        """Gets a single Tanzu Observability integration by its id, along with its status  # noqa: E501
 
           # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -584,7 +588,7 @@ class IntegrationApi(object):
             collection_formats=collection_formats)
 
     def get_integration_status(self, id, **kwargs):  # noqa: E501
-        """Gets the status of a single Wavefront integration  # noqa: E501
+        """Gets the status of a single Tanzu Observability integration  # noqa: E501
 
           # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -606,7 +610,7 @@ class IntegrationApi(object):
             return data
 
     def get_integration_status_with_http_info(self, id, **kwargs):  # noqa: E501
-        """Gets the status of a single Wavefront integration  # noqa: E501
+        """Gets the status of a single Tanzu Observability integration  # noqa: E501
 
           # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -778,7 +782,7 @@ class IntegrationApi(object):
             collection_formats=collection_formats)
 
     def install_integration(self, id, **kwargs):  # noqa: E501
-        """Installs a Wavefront integration  # noqa: E501
+        """Installs a Tanzu Observability integration  # noqa: E501
 
           # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -800,7 +804,7 @@ class IntegrationApi(object):
             return data
 
     def install_integration_with_http_info(self, id, **kwargs):  # noqa: E501
-        """Installs a Wavefront integration  # noqa: E501
+        """Installs a Tanzu Observability integration  # noqa: E501
 
           # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -968,7 +972,7 @@ class IntegrationApi(object):
             collection_formats=collection_formats)
 
     def uninstall_integration(self, id, **kwargs):  # noqa: E501
-        """Uninstalls a Wavefront integration  # noqa: E501
+        """Uninstalls a Tanzu Observability integration  # noqa: E501
 
           # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -990,7 +994,7 @@ class IntegrationApi(object):
             return data
 
     def uninstall_integration_with_http_info(self, id, **kwargs):  # noqa: E501
-        """Uninstalls a Wavefront integration  # noqa: E501
+        """Uninstalls a Tanzu Observability integration  # noqa: E501
 
           # noqa: E501
         This method makes a synchronous HTTP request by default. To make an

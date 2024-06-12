@@ -11,6 +11,9 @@ Method | HTTP request | Description
 [**search_alert_deleted_for_facet**](SearchApi.md#search_alert_deleted_for_facet) | **POST** /api/v2/search/alert/deleted/{facet} | Lists the values of a specific facet over the customer&#39;s deleted alerts
 [**search_alert_deleted_for_facets**](SearchApi.md#search_alert_deleted_for_facets) | **POST** /api/v2/search/alert/deleted/facets | Lists the values of one or more facets over the customer&#39;s deleted alerts
 [**search_alert_entities**](SearchApi.md#search_alert_entities) | **POST** /api/v2/search/alert | Search over a customer&#39;s non-deleted alerts
+[**search_alert_execution_summary_entities**](SearchApi.md#search_alert_execution_summary_entities) | **POST** /api/v2/search/alert-analytics-summary | Search over a customer&#39;s alert executions summaries
+[**search_alert_execution_summary_for_facet**](SearchApi.md#search_alert_execution_summary_for_facet) | **POST** /api/v2/search/alert-analytics-summary/{facet} | Lists the values of a specific facet over the customer&#39;s alert executions summaries
+[**search_alert_execution_summary_for_facets**](SearchApi.md#search_alert_execution_summary_for_facets) | **POST** /api/v2/search/alert-analytics-summary/facets | Lists the values of one or more facets over the customer&#39;s alert executions summaries
 [**search_alert_for_facet**](SearchApi.md#search_alert_for_facet) | **POST** /api/v2/search/alert/{facet} | Lists the values of a specific facet over the customer&#39;s non-deleted alerts
 [**search_alert_for_facets**](SearchApi.md#search_alert_for_facets) | **POST** /api/v2/search/alert/facets | Lists the values of one or more facets over the customer&#39;s non-deleted alerts
 [**search_cloud_integration_deleted_entities**](SearchApi.md#search_cloud_integration_deleted_entities) | **POST** /api/v2/search/cloudintegration/deleted | Search over a customer&#39;s deleted cloud integrations
@@ -79,6 +82,9 @@ Method | HTTP request | Description
 [**search_tagged_source_entities**](SearchApi.md#search_tagged_source_entities) | **POST** /api/v2/search/source | Search over a customer&#39;s sources
 [**search_tagged_source_for_facet**](SearchApi.md#search_tagged_source_for_facet) | **POST** /api/v2/search/source/{facet} | Lists the values of a specific facet over the customer&#39;s sources
 [**search_tagged_source_for_facets**](SearchApi.md#search_tagged_source_for_facets) | **POST** /api/v2/search/source/facets | Lists the values of one or more facets over the customer&#39;s sources
+[**search_token_entities**](SearchApi.md#search_token_entities) | **POST** /api/v2/search/token | Search over a customer&#39;s api tokens
+[**search_token_for_facet**](SearchApi.md#search_token_for_facet) | **POST** /api/v2/search/token/{facet} | Lists the values of a specific facet over the customer&#39;s api tokens
+[**search_token_for_facets**](SearchApi.md#search_token_for_facets) | **POST** /api/v2/search/token/facets | Lists the values of one or more facets over the customer&#39;s api tokens
 [**search_traces_map_for_facet**](SearchApi.md#search_traces_map_for_facet) | **POST** /api/v2/search/savedtracessearch/{facet} | Lists the values of a specific facet over the customer&#39;s non-deleted traces searches
 [**search_traces_map_for_facets**](SearchApi.md#search_traces_map_for_facets) | **POST** /api/v2/search/savedtracessearch/facets | Lists the values of one or more facets over the customer&#39;s non-deleted traces searches
 [**search_user_entities**](SearchApi.md#search_user_entities) | **POST** /api/v2/search/user | Search over a customer&#39;s users
@@ -462,6 +468,182 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ResponseContainerPagedAlertWithStats**](ResponseContainerPagedAlertWithStats.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **search_alert_execution_summary_entities**
+> ResponseContainerPagedAlertAnalyticsSummaryDetail search_alert_execution_summary_entities(start, end=end, body=body)
+
+Search over a customer's alert executions summaries
+
+
+
+### Example
+```python
+from __future__ import print_function
+import time
+import wavefront_api_client
+from wavefront_api_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = wavefront_api_client.Configuration()
+configuration.api_key['X-AUTH-TOKEN'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-AUTH-TOKEN'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = wavefront_api_client.SearchApi(wavefront_api_client.ApiClient(configuration))
+start = 789 # int | Start time in epoch seconds
+end = 789 # int | End time in epoch seconds (optional)
+body = wavefront_api_client.SortableSearchRequest() # SortableSearchRequest |  (optional)
+
+try:
+    # Search over a customer's alert executions summaries
+    api_response = api_instance.search_alert_execution_summary_entities(start, end=end, body=body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling SearchApi->search_alert_execution_summary_entities: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **start** | **int**| Start time in epoch seconds | 
+ **end** | **int**| End time in epoch seconds | [optional] 
+ **body** | [**SortableSearchRequest**](SortableSearchRequest.md)|  | [optional] 
+
+### Return type
+
+[**ResponseContainerPagedAlertAnalyticsSummaryDetail**](ResponseContainerPagedAlertAnalyticsSummaryDetail.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **search_alert_execution_summary_for_facet**
+> ResponseContainerFacetResponse search_alert_execution_summary_for_facet(facet, start, end=end, body=body)
+
+Lists the values of a specific facet over the customer's alert executions summaries
+
+
+
+### Example
+```python
+from __future__ import print_function
+import time
+import wavefront_api_client
+from wavefront_api_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = wavefront_api_client.Configuration()
+configuration.api_key['X-AUTH-TOKEN'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-AUTH-TOKEN'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = wavefront_api_client.SearchApi(wavefront_api_client.ApiClient(configuration))
+facet = 'facet_example' # str | 
+start = 789 # int | Start time in epoch seconds
+end = 789 # int | End time in epoch seconds (optional)
+body = wavefront_api_client.FacetSearchRequestContainer() # FacetSearchRequestContainer |  (optional)
+
+try:
+    # Lists the values of a specific facet over the customer's alert executions summaries
+    api_response = api_instance.search_alert_execution_summary_for_facet(facet, start, end=end, body=body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling SearchApi->search_alert_execution_summary_for_facet: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **facet** | **str**|  | 
+ **start** | **int**| Start time in epoch seconds | 
+ **end** | **int**| End time in epoch seconds | [optional] 
+ **body** | [**FacetSearchRequestContainer**](FacetSearchRequestContainer.md)|  | [optional] 
+
+### Return type
+
+[**ResponseContainerFacetResponse**](ResponseContainerFacetResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **search_alert_execution_summary_for_facets**
+> ResponseContainerFacetsResponseContainer search_alert_execution_summary_for_facets(start, end=end, body=body)
+
+Lists the values of one or more facets over the customer's alert executions summaries
+
+
+
+### Example
+```python
+from __future__ import print_function
+import time
+import wavefront_api_client
+from wavefront_api_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = wavefront_api_client.Configuration()
+configuration.api_key['X-AUTH-TOKEN'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-AUTH-TOKEN'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = wavefront_api_client.SearchApi(wavefront_api_client.ApiClient(configuration))
+start = 789 # int | Start time in epoch seconds
+end = 789 # int | End time in epoch seconds (optional)
+body = wavefront_api_client.FacetsSearchRequestContainer() # FacetsSearchRequestContainer |  (optional)
+
+try:
+    # Lists the values of one or more facets over the customer's alert executions summaries
+    api_response = api_instance.search_alert_execution_summary_for_facets(start, end=end, body=body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling SearchApi->search_alert_execution_summary_for_facets: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **start** | **int**| Start time in epoch seconds | 
+ **end** | **int**| End time in epoch seconds | [optional] 
+ **body** | [**FacetsSearchRequestContainer**](FacetsSearchRequestContainer.md)|  | [optional] 
+
+### Return type
+
+[**ResponseContainerFacetsResponseContainer**](ResponseContainerFacetsResponseContainer.md)
 
 ### Authorization
 
@@ -1405,7 +1587,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_ingestion_policy_entities**
-> ResponseContainerPagedIngestionPolicy search_ingestion_policy_entities(body=body)
+> ResponseContainerPagedIngestionPolicyReadModel search_ingestion_policy_entities(body=body)
 
 Search over a customer's ingestion policies
 
@@ -1445,7 +1627,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResponseContainerPagedIngestionPolicy**](ResponseContainerPagedIngestionPolicy.md)
+[**ResponseContainerPagedIngestionPolicyReadModel**](ResponseContainerPagedIngestionPolicyReadModel.md)
 
 ### Authorization
 
@@ -3161,7 +3343,7 @@ Name | Type | Description  | Notes
 
 Search over a customer's roles
 
-
+<b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.
 
 ### Example
 ```python
@@ -3215,7 +3397,7 @@ Name | Type | Description  | Notes
 
 Lists the values of a specific facet over the customer's roles
 
-
+<b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.
 
 ### Example
 ```python
@@ -3271,7 +3453,7 @@ Name | Type | Description  | Notes
 
 Lists the values of one or more facets over the customer's roles
 
-
+<b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.
 
 ### Example
 ```python
@@ -4194,6 +4376,170 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **search_token_entities**
+> ResponseContainerPagedApiTokenModel search_token_entities(body=body)
+
+Search over a customer's api tokens
+
+
+
+### Example
+```python
+from __future__ import print_function
+import time
+import wavefront_api_client
+from wavefront_api_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = wavefront_api_client.Configuration()
+configuration.api_key['X-AUTH-TOKEN'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-AUTH-TOKEN'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = wavefront_api_client.SearchApi(wavefront_api_client.ApiClient(configuration))
+body = wavefront_api_client.SortableSearchRequest() # SortableSearchRequest |  (optional)
+
+try:
+    # Search over a customer's api tokens
+    api_response = api_instance.search_token_entities(body=body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling SearchApi->search_token_entities: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**SortableSearchRequest**](SortableSearchRequest.md)|  | [optional] 
+
+### Return type
+
+[**ResponseContainerPagedApiTokenModel**](ResponseContainerPagedApiTokenModel.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **search_token_for_facet**
+> ResponseContainerFacetResponse search_token_for_facet(facet, body=body)
+
+Lists the values of a specific facet over the customer's api tokens
+
+
+
+### Example
+```python
+from __future__ import print_function
+import time
+import wavefront_api_client
+from wavefront_api_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = wavefront_api_client.Configuration()
+configuration.api_key['X-AUTH-TOKEN'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-AUTH-TOKEN'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = wavefront_api_client.SearchApi(wavefront_api_client.ApiClient(configuration))
+facet = 'facet_example' # str | 
+body = wavefront_api_client.FacetSearchRequestContainer() # FacetSearchRequestContainer |  (optional)
+
+try:
+    # Lists the values of a specific facet over the customer's api tokens
+    api_response = api_instance.search_token_for_facet(facet, body=body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling SearchApi->search_token_for_facet: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **facet** | **str**|  | 
+ **body** | [**FacetSearchRequestContainer**](FacetSearchRequestContainer.md)|  | [optional] 
+
+### Return type
+
+[**ResponseContainerFacetResponse**](ResponseContainerFacetResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **search_token_for_facets**
+> ResponseContainerFacetsResponseContainer search_token_for_facets(body=body)
+
+Lists the values of one or more facets over the customer's api tokens
+
+
+
+### Example
+```python
+from __future__ import print_function
+import time
+import wavefront_api_client
+from wavefront_api_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = wavefront_api_client.Configuration()
+configuration.api_key['X-AUTH-TOKEN'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-AUTH-TOKEN'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = wavefront_api_client.SearchApi(wavefront_api_client.ApiClient(configuration))
+body = wavefront_api_client.FacetsSearchRequestContainer() # FacetsSearchRequestContainer |  (optional)
+
+try:
+    # Lists the values of one or more facets over the customer's api tokens
+    api_response = api_instance.search_token_for_facets(body=body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling SearchApi->search_token_for_facets: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**FacetsSearchRequestContainer**](FacetsSearchRequestContainer.md)|  | [optional] 
+
+### Return type
+
+[**ResponseContainerFacetsResponseContainer**](ResponseContainerFacetsResponseContainer.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **search_traces_map_for_facet**
 > ResponseContainerFacetResponse search_traces_map_for_facet(facet, body=body)
 
@@ -4309,7 +4655,7 @@ Name | Type | Description  | Notes
 
 Search over a customer's users
 
-
+<b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.
 
 ### Example
 ```python
@@ -4363,7 +4709,7 @@ Name | Type | Description  | Notes
 
 Lists the values of a specific facet over the customer's users
 
-
+<b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.
 
 ### Example
 ```python
@@ -4419,7 +4765,7 @@ Name | Type | Description  | Notes
 
 Lists the values of one or more facets over the customer's users
 
-
+<b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.
 
 ### Example
 ```python

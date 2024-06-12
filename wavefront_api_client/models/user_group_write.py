@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Wavefront REST API Documentation
+    Tanzu Observability REST API Documentation
 
-    <p>The Wavefront REST API enables you to interact with Wavefront servers using standard REST API tools. You can use the REST API to automate commonly executed operations such as automatically tagging sources.</p><p>When you make REST API calls outside the Wavefront REST API documentation you must add the header \"Authorization: Bearer &lt;&lt;API-TOKEN&gt;&gt;\" to your HTTP requests.</p>  # noqa: E501
+    <p>The REST API enables you to interact with the Tanzu Observability service by using standard REST API tools. You can use the REST API to automate commonly executed operations, for example to tag sources automatically.</p><p>When you make REST API calls outside the REST API documentation UI, to authenticate to the service, you must use an API token associated with a user account or a service account. For information on how to get the API token and examples, see <a href=\"http://docs.wavefront.com/using_wavefront_api.html\">Use the Tanzu Observability REST API.</a></p>  # noqa: E501
 
     OpenAPI spec version: v2
     Contact: chitimba@wavefront.com
@@ -38,7 +38,7 @@ class UserGroupWrite(object):
         'description': 'str',
         'id': 'str',
         'name': 'str',
-        'role_i_ds': 'list[str]'
+        'role_ids': 'list[str]'
     }
 
     attribute_map = {
@@ -47,10 +47,10 @@ class UserGroupWrite(object):
         'description': 'description',
         'id': 'id',
         'name': 'name',
-        'role_i_ds': 'roleIDs'
+        'role_ids': 'roleIDs'
     }
 
-    def __init__(self, created_epoch_millis=None, customer=None, description=None, id=None, name=None, role_i_ds=None, _configuration=None):  # noqa: E501
+    def __init__(self, created_epoch_millis=None, customer=None, description=None, id=None, name=None, role_ids=None, _configuration=None):  # noqa: E501
         """UserGroupWrite - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -61,7 +61,7 @@ class UserGroupWrite(object):
         self._description = None
         self._id = None
         self._name = None
-        self._role_i_ds = None
+        self._role_ids = None
         self.discriminator = None
 
         if created_epoch_millis is not None:
@@ -73,7 +73,7 @@ class UserGroupWrite(object):
         if id is not None:
             self.id = id
         self.name = name
-        self.role_i_ds = role_i_ds
+        self.role_ids = role_ids
 
     @property
     def created_epoch_millis(self):
@@ -191,29 +191,29 @@ class UserGroupWrite(object):
         self._name = name
 
     @property
-    def role_i_ds(self):
-        """Gets the role_i_ds of this UserGroupWrite.  # noqa: E501
+    def role_ids(self):
+        """Gets the role_ids of this UserGroupWrite.  # noqa: E501
 
         List of role IDs the user group has been linked to.  # noqa: E501
 
-        :return: The role_i_ds of this UserGroupWrite.  # noqa: E501
+        :return: The role_ids of this UserGroupWrite.  # noqa: E501
         :rtype: list[str]
         """
-        return self._role_i_ds
+        return self._role_ids
 
-    @role_i_ds.setter
-    def role_i_ds(self, role_i_ds):
-        """Sets the role_i_ds of this UserGroupWrite.
+    @role_ids.setter
+    def role_ids(self, role_ids):
+        """Sets the role_ids of this UserGroupWrite.
 
         List of role IDs the user group has been linked to.  # noqa: E501
 
-        :param role_i_ds: The role_i_ds of this UserGroupWrite.  # noqa: E501
+        :param role_ids: The role_ids of this UserGroupWrite.  # noqa: E501
         :type: list[str]
         """
-        if self._configuration.client_side_validation and role_i_ds is None:
-            raise ValueError("Invalid value for `role_i_ds`, must not be `None`")  # noqa: E501
+        if self._configuration.client_side_validation and role_ids is None:
+            raise ValueError("Invalid value for `role_ids`, must not be `None`")  # noqa: E501
 
-        self._role_i_ds = role_i_ds
+        self._role_ids = role_ids
 
     def to_dict(self):
         """Returns the model properties as a dict"""

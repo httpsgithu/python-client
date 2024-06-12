@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Wavefront REST API Documentation
+    Tanzu Observability REST API Documentation
 
-    <p>The Wavefront REST API enables you to interact with Wavefront servers using standard REST API tools. You can use the REST API to automate commonly executed operations such as automatically tagging sources.</p><p>When you make REST API calls outside the Wavefront REST API documentation you must add the header \"Authorization: Bearer &lt;&lt;API-TOKEN&gt;&gt;\" to your HTTP requests.</p>  # noqa: E501
+    <p>The REST API enables you to interact with the Tanzu Observability service by using standard REST API tools. You can use the REST API to automate commonly executed operations, for example to tag sources automatically.</p><p>When you make REST API calls outside the REST API documentation UI, to authenticate to the service, you must use an API token associated with a user account or a service account. For information on how to get the API token and examples, see <a href=\"http://docs.wavefront.com/using_wavefront_api.html\">Use the Tanzu Observability REST API.</a></p>  # noqa: E501
 
     OpenAPI spec version: v2
     Contact: chitimba@wavefront.com
@@ -39,7 +39,6 @@ class CustomerFacingUserObject(object):
         'groups': 'list[str]',
         'id': 'str',
         'identifier': 'str',
-        'ingestion_policy_id': 'str',
         'last_successful_login': 'int',
         '_self': 'bool',
         'united_permissions': 'list[str]',
@@ -54,7 +53,6 @@ class CustomerFacingUserObject(object):
         'groups': 'groups',
         'id': 'id',
         'identifier': 'identifier',
-        'ingestion_policy_id': 'ingestionPolicyId',
         'last_successful_login': 'lastSuccessfulLogin',
         '_self': 'self',
         'united_permissions': 'unitedPermissions',
@@ -62,7 +60,7 @@ class CustomerFacingUserObject(object):
         'user_groups': 'userGroups'
     }
 
-    def __init__(self, customer=None, escaped_identifier=None, gravatar_url=None, groups=None, id=None, identifier=None, ingestion_policy_id=None, last_successful_login=None, _self=None, united_permissions=None, united_roles=None, user_groups=None, _configuration=None):  # noqa: E501
+    def __init__(self, customer=None, escaped_identifier=None, gravatar_url=None, groups=None, id=None, identifier=None, last_successful_login=None, _self=None, united_permissions=None, united_roles=None, user_groups=None, _configuration=None):  # noqa: E501
         """CustomerFacingUserObject - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -74,7 +72,6 @@ class CustomerFacingUserObject(object):
         self._groups = None
         self._id = None
         self._identifier = None
-        self._ingestion_policy_id = None
         self._last_successful_login = None
         self.__self = None
         self._united_permissions = None
@@ -91,8 +88,6 @@ class CustomerFacingUserObject(object):
             self.groups = groups
         self.id = id
         self.identifier = identifier
-        if ingestion_policy_id is not None:
-            self.ingestion_policy_id = ingestion_policy_id
         if last_successful_login is not None:
             self.last_successful_login = last_successful_login
         self._self = _self
@@ -246,29 +241,6 @@ class CustomerFacingUserObject(object):
             raise ValueError("Invalid value for `identifier`, must not be `None`")  # noqa: E501
 
         self._identifier = identifier
-
-    @property
-    def ingestion_policy_id(self):
-        """Gets the ingestion_policy_id of this CustomerFacingUserObject.  # noqa: E501
-
-        The identifier of the ingestion policy linked with user.  # noqa: E501
-
-        :return: The ingestion_policy_id of this CustomerFacingUserObject.  # noqa: E501
-        :rtype: str
-        """
-        return self._ingestion_policy_id
-
-    @ingestion_policy_id.setter
-    def ingestion_policy_id(self, ingestion_policy_id):
-        """Sets the ingestion_policy_id of this CustomerFacingUserObject.
-
-        The identifier of the ingestion policy linked with user.  # noqa: E501
-
-        :param ingestion_policy_id: The ingestion_policy_id of this CustomerFacingUserObject.  # noqa: E501
-        :type: str
-        """
-
-        self._ingestion_policy_id = ingestion_policy_id
 
     @property
     def last_successful_login(self):

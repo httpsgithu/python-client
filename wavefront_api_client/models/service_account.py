@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Wavefront REST API Documentation
+    Tanzu Observability REST API Documentation
 
-    <p>The Wavefront REST API enables you to interact with Wavefront servers using standard REST API tools. You can use the REST API to automate commonly executed operations such as automatically tagging sources.</p><p>When you make REST API calls outside the Wavefront REST API documentation you must add the header \"Authorization: Bearer &lt;&lt;API-TOKEN&gt;&gt;\" to your HTTP requests.</p>  # noqa: E501
+    <p>The REST API enables you to interact with the Tanzu Observability service by using standard REST API tools. You can use the REST API to automate commonly executed operations, for example to tag sources automatically.</p><p>When you make REST API calls outside the REST API documentation UI, to authenticate to the service, you must use an API token associated with a user account or a service account. For information on how to get the API token and examples, see <a href=\"http://docs.wavefront.com/using_wavefront_api.html\">Use the Tanzu Observability REST API.</a></p>  # noqa: E501
 
     OpenAPI spec version: v2
     Contact: chitimba@wavefront.com
@@ -37,8 +37,6 @@ class ServiceAccount(object):
         'description': 'str',
         'groups': 'list[str]',
         'identifier': 'str',
-        'ingestion_policies': 'list[IngestionPolicy]',
-        'ingestion_policy': 'IngestionPolicy',
         'last_used': 'int',
         'roles': 'list[RoleDTO]',
         'tokens': 'list[UserApiToken]',
@@ -52,8 +50,6 @@ class ServiceAccount(object):
         'description': 'description',
         'groups': 'groups',
         'identifier': 'identifier',
-        'ingestion_policies': 'ingestionPolicies',
-        'ingestion_policy': 'ingestionPolicy',
         'last_used': 'lastUsed',
         'roles': 'roles',
         'tokens': 'tokens',
@@ -62,7 +58,7 @@ class ServiceAccount(object):
         'user_groups': 'userGroups'
     }
 
-    def __init__(self, active=None, description=None, groups=None, identifier=None, ingestion_policies=None, ingestion_policy=None, last_used=None, roles=None, tokens=None, united_permissions=None, united_roles=None, user_groups=None, _configuration=None):  # noqa: E501
+    def __init__(self, active=None, description=None, groups=None, identifier=None, last_used=None, roles=None, tokens=None, united_permissions=None, united_roles=None, user_groups=None, _configuration=None):  # noqa: E501
         """ServiceAccount - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -72,8 +68,6 @@ class ServiceAccount(object):
         self._description = None
         self._groups = None
         self._identifier = None
-        self._ingestion_policies = None
-        self._ingestion_policy = None
         self._last_used = None
         self._roles = None
         self._tokens = None
@@ -88,10 +82,6 @@ class ServiceAccount(object):
         if groups is not None:
             self.groups = groups
         self.identifier = identifier
-        if ingestion_policies is not None:
-            self.ingestion_policies = ingestion_policies
-        if ingestion_policy is not None:
-            self.ingestion_policy = ingestion_policy
         if last_used is not None:
             self.last_used = last_used
         if roles is not None:
@@ -200,52 +190,6 @@ class ServiceAccount(object):
             raise ValueError("Invalid value for `identifier`, must not be `None`")  # noqa: E501
 
         self._identifier = identifier
-
-    @property
-    def ingestion_policies(self):
-        """Gets the ingestion_policies of this ServiceAccount.  # noqa: E501
-
-        The list of service account's ingestion policies.  # noqa: E501
-
-        :return: The ingestion_policies of this ServiceAccount.  # noqa: E501
-        :rtype: list[IngestionPolicy]
-        """
-        return self._ingestion_policies
-
-    @ingestion_policies.setter
-    def ingestion_policies(self, ingestion_policies):
-        """Sets the ingestion_policies of this ServiceAccount.
-
-        The list of service account's ingestion policies.  # noqa: E501
-
-        :param ingestion_policies: The ingestion_policies of this ServiceAccount.  # noqa: E501
-        :type: list[IngestionPolicy]
-        """
-
-        self._ingestion_policies = ingestion_policies
-
-    @property
-    def ingestion_policy(self):
-        """Gets the ingestion_policy of this ServiceAccount.  # noqa: E501
-
-        The ingestion policy object linked with service account.  # noqa: E501
-
-        :return: The ingestion_policy of this ServiceAccount.  # noqa: E501
-        :rtype: IngestionPolicy
-        """
-        return self._ingestion_policy
-
-    @ingestion_policy.setter
-    def ingestion_policy(self, ingestion_policy):
-        """Sets the ingestion_policy of this ServiceAccount.
-
-        The ingestion policy object linked with service account.  # noqa: E501
-
-        :param ingestion_policy: The ingestion_policy of this ServiceAccount.  # noqa: E501
-        :type: IngestionPolicy
-        """
-
-        self._ingestion_policy = ingestion_policy
 
     @property
     def last_used(self):

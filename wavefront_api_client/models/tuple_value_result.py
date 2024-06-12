@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Wavefront REST API Documentation
+    Tanzu Observability REST API Documentation
 
-    <p>The Wavefront REST API enables you to interact with Wavefront servers using standard REST API tools. You can use the REST API to automate commonly executed operations such as automatically tagging sources.</p><p>When you make REST API calls outside the Wavefront REST API documentation you must add the header \"Authorization: Bearer &lt;&lt;API-TOKEN&gt;&gt;\" to your HTTP requests.</p>  # noqa: E501
+    <p>The REST API enables you to interact with the Tanzu Observability service by using standard REST API tools. You can use the REST API to automate commonly executed operations, for example to tag sources automatically.</p><p>When you make REST API calls outside the REST API documentation UI, to authenticate to the service, you must use an API token associated with a user account or a service account. For information on how to get the API token and examples, see <a href=\"http://docs.wavefront.com/using_wavefront_api.html\">Use the Tanzu Observability REST API.</a></p>  # noqa: E501
 
     OpenAPI spec version: v2
     Contact: chitimba@wavefront.com
@@ -34,7 +34,7 @@ class TupleValueResult(object):
     """
     swagger_types = {
         'count': 'int',
-        'value': 'Tuple'
+        'value': 'list[str]'
     }
 
     attribute_map = {
@@ -84,10 +84,10 @@ class TupleValueResult(object):
     def value(self):
         """Gets the value of this TupleValueResult.  # noqa: E501
 
-        The possible values for a given key tuple.  # noqa: E501
+        The possible values for a given key list.  # noqa: E501
 
         :return: The value of this TupleValueResult.  # noqa: E501
-        :rtype: Tuple
+        :rtype: list[str]
         """
         return self._value
 
@@ -95,10 +95,10 @@ class TupleValueResult(object):
     def value(self, value):
         """Sets the value of this TupleValueResult.
 
-        The possible values for a given key tuple.  # noqa: E501
+        The possible values for a given key list.  # noqa: E501
 
         :param value: The value of this TupleValueResult.  # noqa: E501
-        :type: Tuple
+        :type: list[str]
         """
 
         self._value = value

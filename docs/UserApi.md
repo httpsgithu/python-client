@@ -26,7 +26,7 @@ Method | HTTP request | Description
 
 Adds specific groups to the user or service account
 
-
+<b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.
 
 ### Example
 ```python
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 Creates an user if the user doesn't already exist.
 
-
+<b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.
 
 ### Example
 ```python
@@ -101,7 +101,7 @@ configuration.api_key['X-AUTH-TOKEN'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = wavefront_api_client.UserApi(wavefront_api_client.ApiClient(configuration))
 send_email = true # bool | Whether to send email notification to the user, if created.  Default: false (optional)
-body = wavefront_api_client.UserToCreate() # UserToCreate | Example Body:  <pre>{   \"emailAddress\": \"user@example.com\",   \"groups\": [     \"user_management\"   ],   \"userGroups\": [     \"8b23136b-ecd2-4cb5-8c92-62477dcc4090\"   ],   \"roles\": [     \"Role\"   ],   \"ingestionPolicies\": [     \"policyId1\",     \"policyId2\"   ] }</pre> (optional)
+body = wavefront_api_client.UserToCreate() # UserToCreate | Example Body:  <pre>{   \"emailAddress\": \"user@example.com\",   \"groups\": [     \"user_management\"   ],   \"userGroups\": [     \"8b23136b-ecd2-4cb5-8c92-62477dcc4090\"   ],   \"roles\": [     \"Role\"   ], }</pre> (optional)
 
 try:
     # Creates an user if the user doesn't already exist.
@@ -116,7 +116,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **send_email** | **bool**| Whether to send email notification to the user, if created.  Default: false | [optional] 
- **body** | [**UserToCreate**](UserToCreate.md)| Example Body:  &lt;pre&gt;{   \&quot;emailAddress\&quot;: \&quot;user@example.com\&quot;,   \&quot;groups\&quot;: [     \&quot;user_management\&quot;   ],   \&quot;userGroups\&quot;: [     \&quot;8b23136b-ecd2-4cb5-8c92-62477dcc4090\&quot;   ],   \&quot;roles\&quot;: [     \&quot;Role\&quot;   ],   \&quot;ingestionPolicies\&quot;: [     \&quot;policyId1\&quot;,     \&quot;policyId2\&quot;   ] }&lt;/pre&gt; | [optional] 
+ **body** | [**UserToCreate**](UserToCreate.md)| Example Body:  &lt;pre&gt;{   \&quot;emailAddress\&quot;: \&quot;user@example.com\&quot;,   \&quot;groups\&quot;: [     \&quot;user_management\&quot;   ],   \&quot;userGroups\&quot;: [     \&quot;8b23136b-ecd2-4cb5-8c92-62477dcc4090\&quot;   ],   \&quot;roles\&quot;: [     \&quot;Role\&quot;   ], }&lt;/pre&gt; | [optional] 
 
 ### Return type
 
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 
 Deletes multiple users or service accounts
 
-
+<b>Note</b>: For original Tanzu Observability instances, applies to user accounts and service accounts. For Tanzu Observability instances that are onboarded to VMware Cloud services, applies only to service accounts.
 
 ### Example
 ```python
@@ -192,7 +192,7 @@ Name | Type | Description  | Notes
 
 Deletes a user or service account identified by id
 
-
+<b>Note</b>: For original Tanzu Observability instances, applies to user accounts and service accounts. For Tanzu Observability instances that are onboarded to VMware Cloud services, applies only to service accounts.
 
 ### Example
 ```python
@@ -245,7 +245,7 @@ void (empty response body)
 
 Get all users
 
-Returns all users
+<b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.
 
 ### Example
 ```python
@@ -295,7 +295,7 @@ This endpoint does not need any parameter.
 
 Retrieves a user by identifier (email address)
 
-
+<b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.
 
 ### Example
 ```python
@@ -403,7 +403,7 @@ Name | Type | Description  | Notes
 
 Grants a specific permission to multiple users or service accounts
 
-
+<b>Note</b>: For original Tanzu Observability instances, applies to user accounts and service accounts. For Tanzu Observability instances that are onboarded to VMware Cloud services, applies only to service accounts.
 
 ### Example
 ```python
@@ -459,7 +459,7 @@ Name | Type | Description  | Notes
 
 Grants a specific permission to user or service account
 
-
+<b>Note</b>: For original Tanzu Observability instances, applies to user accounts and service accounts. For Tanzu Observability instances that are onboarded to VMware Cloud services, applies only to service accounts.
 
 ### Example
 ```python
@@ -515,7 +515,7 @@ Name | Type | Description  | Notes
 
 Invite users with given user groups and permissions.
 
-
+<b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.
 
 ### Example
 ```python
@@ -533,7 +533,7 @@ configuration.api_key['X-AUTH-TOKEN'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = wavefront_api_client.UserApi(wavefront_api_client.ApiClient(configuration))
-body = [wavefront_api_client.UserToCreate()] # list[UserToCreate] | Example Body:  <pre>[ {   \"emailAddress\": \"user@example.com\",   \"groups\": [     \"user_management\"   ],   \"userGroups\": [     \"8b23136b-ecd2-4cb5-8c92-62477dcc4090\"   ],   \"roles\": [     \"Role\"   ],   \"ingestionPolicies\": [     \"policyId1\",     \"policyId2\"   ] } ]</pre> (optional)
+body = [wavefront_api_client.UserToCreate()] # list[UserToCreate] | Example Body:  <pre>[ {   \"emailAddress\": \"user@example.com\",   \"groups\": [     \"user_management\"   ],   \"userGroups\": [     \"8b23136b-ecd2-4cb5-8c92-62477dcc4090\"   ],   \"roles\": [     \"Role\"   ], } ]</pre> (optional)
 
 try:
     # Invite users with given user groups and permissions.
@@ -547,7 +547,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**list[UserToCreate]**](UserToCreate.md)| Example Body:  &lt;pre&gt;[ {   \&quot;emailAddress\&quot;: \&quot;user@example.com\&quot;,   \&quot;groups\&quot;: [     \&quot;user_management\&quot;   ],   \&quot;userGroups\&quot;: [     \&quot;8b23136b-ecd2-4cb5-8c92-62477dcc4090\&quot;   ],   \&quot;roles\&quot;: [     \&quot;Role\&quot;   ],   \&quot;ingestionPolicies\&quot;: [     \&quot;policyId1\&quot;,     \&quot;policyId2\&quot;   ] } ]&lt;/pre&gt; | [optional] 
+ **body** | [**list[UserToCreate]**](UserToCreate.md)| Example Body:  &lt;pre&gt;[ {   \&quot;emailAddress\&quot;: \&quot;user@example.com\&quot;,   \&quot;groups\&quot;: [     \&quot;user_management\&quot;   ],   \&quot;userGroups\&quot;: [     \&quot;8b23136b-ecd2-4cb5-8c92-62477dcc4090\&quot;   ],   \&quot;roles\&quot;: [     \&quot;Role\&quot;   ], } ]&lt;/pre&gt; | [optional] 
 
 ### Return type
 
@@ -569,7 +569,7 @@ Name | Type | Description  | Notes
 
 Removes specific groups from the user or service account
 
-
+<b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.
 
 ### Example
 ```python
@@ -625,7 +625,7 @@ Name | Type | Description  | Notes
 
 Revokes a specific permission from multiple users or service accounts
 
-
+<b>Note</b>: For original Tanzu Observability instances, applies to user accounts and service accounts. For Tanzu Observability instances that are onboarded to VMware Cloud services, applies only to service accounts.
 
 ### Example
 ```python
@@ -681,7 +681,7 @@ Name | Type | Description  | Notes
 
 Revokes a specific permission from user or service account
 
-
+<b>Note</b>: For original Tanzu Observability instances, applies to user accounts and service accounts. For Tanzu Observability instances that are onboarded to VMware Cloud services, applies only to service accounts.
 
 ### Example
 ```python
@@ -737,7 +737,7 @@ Name | Type | Description  | Notes
 
 Update user with given user groups, permissions and ingestion policy.
 
-
+<b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.
 
 ### Example
 ```python
@@ -756,7 +756,7 @@ configuration.api_key['X-AUTH-TOKEN'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = wavefront_api_client.UserApi(wavefront_api_client.ApiClient(configuration))
 id = 'id_example' # str | 
-body = wavefront_api_client.UserRequestDTO() # UserRequestDTO | Example Body:  <pre>{   \"identifier\": \"user@example.com\",   \"groups\": [     \"user_management\"   ],   \"userGroups\": [     \"8b23136b-ecd2-4cb5-8c92-62477dcc4090\"   ],   \"ingestionPolicies\": [     \"policy_id\"   ],   \"roles\": [     \"Role\"   ] }</pre> (optional)
+body = wavefront_api_client.UserRequestDTO() # UserRequestDTO | Example Body:  <pre>{   \"identifier\": \"user@example.com\",   \"groups\": [     \"user_management\"   ],   \"userGroups\": [     \"8b23136b-ecd2-4cb5-8c92-62477dcc4090\"   ],   \"roles\": [     \"Role\"   ] }</pre> (optional)
 
 try:
     # Update user with given user groups, permissions and ingestion policy.
@@ -771,7 +771,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
- **body** | [**UserRequestDTO**](UserRequestDTO.md)| Example Body:  &lt;pre&gt;{   \&quot;identifier\&quot;: \&quot;user@example.com\&quot;,   \&quot;groups\&quot;: [     \&quot;user_management\&quot;   ],   \&quot;userGroups\&quot;: [     \&quot;8b23136b-ecd2-4cb5-8c92-62477dcc4090\&quot;   ],   \&quot;ingestionPolicies\&quot;: [     \&quot;policy_id\&quot;   ],   \&quot;roles\&quot;: [     \&quot;Role\&quot;   ] }&lt;/pre&gt; | [optional] 
+ **body** | [**UserRequestDTO**](UserRequestDTO.md)| Example Body:  &lt;pre&gt;{   \&quot;identifier\&quot;: \&quot;user@example.com\&quot;,   \&quot;groups\&quot;: [     \&quot;user_management\&quot;   ],   \&quot;userGroups\&quot;: [     \&quot;8b23136b-ecd2-4cb5-8c92-62477dcc4090\&quot;   ],   \&quot;roles\&quot;: [     \&quot;Role\&quot;   ] }&lt;/pre&gt; | [optional] 
 
 ### Return type
 

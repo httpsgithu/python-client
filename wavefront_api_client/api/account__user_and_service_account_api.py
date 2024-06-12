@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Wavefront REST API Documentation
+    Tanzu Observability REST API Documentation
 
-    <p>The Wavefront REST API enables you to interact with Wavefront servers using standard REST API tools. You can use the REST API to automate commonly executed operations such as automatically tagging sources.</p><p>When you make REST API calls outside the Wavefront REST API documentation you must add the header \"Authorization: Bearer &lt;&lt;API-TOKEN&gt;&gt;\" to your HTTP requests.</p>  # noqa: E501
+    <p>The REST API enables you to interact with the Tanzu Observability service by using standard REST API tools. You can use the REST API to automate commonly executed operations, for example to tag sources automatically.</p><p>When you make REST API calls outside the REST API documentation UI, to authenticate to the service, you must use an API token associated with a user account or a service account. For information on how to get the API token and examples, see <a href=\"http://docs.wavefront.com/using_wavefront_api.html\">Use the Tanzu Observability REST API.</a></p>  # noqa: E501
 
     OpenAPI spec version: v2
     Contact: chitimba@wavefront.com
@@ -135,7 +135,7 @@ class AccountUserAndServiceAccountApi(object):
     def add_account_to_roles(self, id, **kwargs):  # noqa: E501
         """Adds specific roles to the account (user or service account)  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.add_account_to_roles(id, async_req=True)
@@ -158,7 +158,7 @@ class AccountUserAndServiceAccountApi(object):
     def add_account_to_roles_with_http_info(self, id, **kwargs):  # noqa: E501
         """Adds specific roles to the account (user or service account)  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.add_account_to_roles_with_http_info(id, async_req=True)
@@ -238,7 +238,7 @@ class AccountUserAndServiceAccountApi(object):
     def add_account_to_user_groups(self, id, **kwargs):  # noqa: E501
         """Adds specific groups to the account (user or service account)  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.add_account_to_user_groups(id, async_req=True)
@@ -261,7 +261,7 @@ class AccountUserAndServiceAccountApi(object):
     def add_account_to_user_groups_with_http_info(self, id, **kwargs):  # noqa: E501
         """Adds specific groups to the account (user or service account)  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.add_account_to_user_groups_with_http_info(id, async_req=True)
@@ -338,200 +338,10 @@ class AccountUserAndServiceAccountApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def add_ingestion_policy(self, **kwargs):  # noqa: E501
-        """Add a specific ingestion policy to multiple accounts  # noqa: E501
-
-          # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.add_ingestion_policy(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param IngestionPolicyMapping body: Example Body:  <pre>{   \"ingestionPolicyId\": \"Ingestion policy identifier\",   \"accounts\": [   \"account1\",   \"account2\",   \"account3\"   ],   \"groups\": [   \"group1\",   \"group2\"   ] }</pre>
-        :return: ResponseContainer
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.add_ingestion_policy_with_http_info(**kwargs)  # noqa: E501
-        else:
-            (data) = self.add_ingestion_policy_with_http_info(**kwargs)  # noqa: E501
-            return data
-
-    def add_ingestion_policy_with_http_info(self, **kwargs):  # noqa: E501
-        """Add a specific ingestion policy to multiple accounts  # noqa: E501
-
-          # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.add_ingestion_policy_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param IngestionPolicyMapping body: Example Body:  <pre>{   \"ingestionPolicyId\": \"Ingestion policy identifier\",   \"accounts\": [   \"account1\",   \"account2\",   \"account3\"   ],   \"groups\": [   \"group1\",   \"group2\"   ] }</pre>
-        :return: ResponseContainer
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['body']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method add_ingestion_policy" % key
-                )
-            params[key] = val
-        del params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['api_key']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/api/v2/account/addingestionpolicy', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='ResponseContainer',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def add_single_ingestion_policy(self, **kwargs):  # noqa: E501
-        """Add single ingestion policy to multiple accounts  # noqa: E501
-
-          # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.add_single_ingestion_policy(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param IngestionPolicyMapping body: Example Body:  <pre>{   \"ingestionPolicyId\": \"Ingestion policy identifier\",   \"accounts\": [   \"account1\",   \"account2\",   \"account3\"   ],   \"groups\": [   \"group1\",   \"group2\"   ] }</pre>
-        :return: ResponseContainerUserDTO
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.add_single_ingestion_policy_with_http_info(**kwargs)  # noqa: E501
-        else:
-            (data) = self.add_single_ingestion_policy_with_http_info(**kwargs)  # noqa: E501
-            return data
-
-    def add_single_ingestion_policy_with_http_info(self, **kwargs):  # noqa: E501
-        """Add single ingestion policy to multiple accounts  # noqa: E501
-
-          # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.add_single_ingestion_policy_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param IngestionPolicyMapping body: Example Body:  <pre>{   \"ingestionPolicyId\": \"Ingestion policy identifier\",   \"accounts\": [   \"account1\",   \"account2\",   \"account3\"   ],   \"groups\": [   \"group1\",   \"group2\"   ] }</pre>
-        :return: ResponseContainerUserDTO
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['body']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method add_single_ingestion_policy" % key
-                )
-            params[key] = val
-        del params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['api_key']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/api/v2/account/addIngestionPolicy', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='ResponseContainerUserDTO',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
     def create_or_update_user_account(self, **kwargs):  # noqa: E501
         """Creates or updates a user account  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.create_or_update_user_account(async_req=True)
@@ -539,7 +349,7 @@ class AccountUserAndServiceAccountApi(object):
 
         :param async_req bool
         :param bool send_email: Whether to send email notification to the user, if created.  Default: false
-        :param UserToCreate body: Example Body:  <pre>{   \"emailAddress\": \"user@example.com\",   \"groups\": [     \"user_management\"   ],   \"userGroups\": [     \"8b23136b-ecd2-4cb5-8c92-62477dcc4090\"   ],   \"roles\": [     \"Role\"   ],   \"ingestionPolicies\": [     \"policyId1\",     \"policyId2\"   ] }</pre>
+        :param UserToCreate body: Example Body:  <pre>{   \"emailAddress\": \"user@example.com\",   \"groups\": [     \"user_management\"   ],   \"userGroups\": [     \"8b23136b-ecd2-4cb5-8c92-62477dcc4090\"   ],   \"roles\": [     \"Role\"   ], }</pre>
         :return: UserModel
                  If the method is called asynchronously,
                  returns the request thread.
@@ -554,7 +364,7 @@ class AccountUserAndServiceAccountApi(object):
     def create_or_update_user_account_with_http_info(self, **kwargs):  # noqa: E501
         """Creates or updates a user account  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.create_or_update_user_account_with_http_info(async_req=True)
@@ -562,7 +372,7 @@ class AccountUserAndServiceAccountApi(object):
 
         :param async_req bool
         :param bool send_email: Whether to send email notification to the user, if created.  Default: false
-        :param UserToCreate body: Example Body:  <pre>{   \"emailAddress\": \"user@example.com\",   \"groups\": [     \"user_management\"   ],   \"userGroups\": [     \"8b23136b-ecd2-4cb5-8c92-62477dcc4090\"   ],   \"roles\": [     \"Role\"   ],   \"ingestionPolicies\": [     \"policyId1\",     \"policyId2\"   ] }</pre>
+        :param UserToCreate body: Example Body:  <pre>{   \"emailAddress\": \"user@example.com\",   \"groups\": [     \"user_management\"   ],   \"userGroups\": [     \"8b23136b-ecd2-4cb5-8c92-62477dcc4090\"   ],   \"roles\": [     \"Role\"   ], }</pre>
         :return: UserModel
                  If the method is called asynchronously,
                  returns the request thread.
@@ -824,7 +634,7 @@ class AccountUserAndServiceAccountApi(object):
     def delete_account(self, id, **kwargs):  # noqa: E501
         """Deletes an account (user or service account) identified by id  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: For original Tanzu Observability instances, applies to user accounts and service accounts. For Tanzu Observability instances that are onboarded to VMware Cloud services, applies only to service accounts.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.delete_account(id, async_req=True)
@@ -846,7 +656,7 @@ class AccountUserAndServiceAccountApi(object):
     def delete_account_with_http_info(self, id, **kwargs):  # noqa: E501
         """Deletes an account (user or service account) identified by id  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: For original Tanzu Observability instances, applies to user accounts and service accounts. For Tanzu Observability instances that are onboarded to VMware Cloud services, applies only to service accounts.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.delete_account_with_http_info(id, async_req=True)
@@ -919,7 +729,7 @@ class AccountUserAndServiceAccountApi(object):
     def delete_multiple_accounts(self, **kwargs):  # noqa: E501
         """Deletes multiple accounts (users or service accounts)  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: For original Tanzu Observability instances, applies to user accounts and service accounts. For Tanzu Observability instances that are onboarded to VMware Cloud services, applies only to service accounts.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.delete_multiple_accounts(async_req=True)
@@ -941,7 +751,7 @@ class AccountUserAndServiceAccountApi(object):
     def delete_multiple_accounts_with_http_info(self, **kwargs):  # noqa: E501
         """Deletes multiple accounts (users or service accounts)  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: For original Tanzu Observability instances, applies to user accounts and service accounts. For Tanzu Observability instances that are onboarded to VMware Cloud services, applies only to service accounts.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.delete_multiple_accounts_with_http_info(async_req=True)
@@ -1014,7 +824,7 @@ class AccountUserAndServiceAccountApi(object):
     def get_account(self, id, **kwargs):  # noqa: E501
         """Get a specific account (user or service account)  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_account(id, async_req=True)
@@ -1036,7 +846,7 @@ class AccountUserAndServiceAccountApi(object):
     def get_account_with_http_info(self, id, **kwargs):  # noqa: E501
         """Get a specific account (user or service account)  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_account_with_http_info(id, async_req=True)
@@ -1204,7 +1014,7 @@ class AccountUserAndServiceAccountApi(object):
     def get_all_accounts(self, **kwargs):  # noqa: E501
         """Get all accounts (users and service accounts) of a customer  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_all_accounts(async_req=True)
@@ -1227,7 +1037,7 @@ class AccountUserAndServiceAccountApi(object):
     def get_all_accounts_with_http_info(self, **kwargs):  # noqa: E501
         """Get all accounts (users and service accounts) of a customer  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_all_accounts_with_http_info(async_req=True)
@@ -1386,14 +1196,14 @@ class AccountUserAndServiceAccountApi(object):
     def get_all_user_accounts(self, **kwargs):  # noqa: E501
         """Get all user accounts  # noqa: E501
 
-        Returns all user accounts  # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_all_user_accounts(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :return: list[UserModel]
+        :return: ResponseContainerListUserDTO
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1407,14 +1217,14 @@ class AccountUserAndServiceAccountApi(object):
     def get_all_user_accounts_with_http_info(self, **kwargs):  # noqa: E501
         """Get all user accounts  # noqa: E501
 
-        Returns all user accounts  # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_all_user_accounts_with_http_info(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :return: list[UserModel]
+        :return: ResponseContainerListUserDTO
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1462,7 +1272,7 @@ class AccountUserAndServiceAccountApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='list[UserModel]',  # noqa: E501
+            response_type='ResponseContainerListUserDTO',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1568,7 +1378,7 @@ class AccountUserAndServiceAccountApi(object):
     def get_user_account(self, id, **kwargs):  # noqa: E501
         """Retrieves a user by identifier (email address)  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_user_account(id, async_req=True)
@@ -1590,7 +1400,7 @@ class AccountUserAndServiceAccountApi(object):
     def get_user_account_with_http_info(self, id, **kwargs):  # noqa: E501
         """Retrieves a user by identifier (email address)  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_user_account_with_http_info(id, async_req=True)
@@ -1660,10 +1470,97 @@ class AccountUserAndServiceAccountApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def get_users_with_accounts_permission(self, **kwargs):  # noqa: E501
+        """Get all users with Accounts permission  # noqa: E501
+
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_users_with_accounts_permission(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :return: ResponseContainerListString
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.get_users_with_accounts_permission_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.get_users_with_accounts_permission_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def get_users_with_accounts_permission_with_http_info(self, **kwargs):  # noqa: E501
+        """Get all users with Accounts permission  # noqa: E501
+
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_users_with_accounts_permission_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :return: ResponseContainerListString
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_users_with_accounts_permission" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/api/v2/account/user/admin', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ResponseContainerListString',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def grant_account_permission(self, id, permission, **kwargs):  # noqa: E501
         """Grants a specific permission to account (user or service account)  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: For original Tanzu Observability instances, applies to user accounts and service accounts. For Tanzu Observability instances that are onboarded to VMware Cloud services, applies only to service accounts.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.grant_account_permission(id, permission, async_req=True)
@@ -1686,7 +1583,7 @@ class AccountUserAndServiceAccountApi(object):
     def grant_account_permission_with_http_info(self, id, permission, **kwargs):  # noqa: E501
         """Grants a specific permission to account (user or service account)  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: For original Tanzu Observability instances, applies to user accounts and service accounts. For Tanzu Observability instances that are onboarded to VMware Cloud services, applies only to service accounts.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.grant_account_permission_with_http_info(id, permission, async_req=True)
@@ -1768,16 +1665,16 @@ class AccountUserAndServiceAccountApi(object):
             collection_formats=collection_formats)
 
     def grant_permission_to_accounts(self, permission, **kwargs):  # noqa: E501
-        """Grants a specific permission to multiple accounts (users or service accounts)  # noqa: E501
+        """Grant a permission to accounts (users or service accounts)  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: For original Tanzu Observability instances, applies to user accounts and service accounts. For Tanzu Observability instances that are onboarded to VMware Cloud services, applies only to service accounts.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.grant_permission_to_accounts(permission, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str permission: Permission to grant to the accounts. Please note that 'host_tag_management' is the equivalent of the 'Source Tag Management' permission (required)
+        :param str permission: The permission to grant. Note that <code>host_tag_management</code> is the equivalent of the **Source Tag Management** permission, <code>monitored_application_service_management</code> is the equivalent of the **Integrations** permission, <code>agent_management</code> is the equivalent of the **Proxies** permission. (required)
         :param list[str] body: List of accounts the specified permission to be granted to
         :return: UserModel
                  If the method is called asynchronously,
@@ -1791,16 +1688,16 @@ class AccountUserAndServiceAccountApi(object):
             return data
 
     def grant_permission_to_accounts_with_http_info(self, permission, **kwargs):  # noqa: E501
-        """Grants a specific permission to multiple accounts (users or service accounts)  # noqa: E501
+        """Grant a permission to accounts (users or service accounts)  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: For original Tanzu Observability instances, applies to user accounts and service accounts. For Tanzu Observability instances that are onboarded to VMware Cloud services, applies only to service accounts.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.grant_permission_to_accounts_with_http_info(permission, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str permission: Permission to grant to the accounts. Please note that 'host_tag_management' is the equivalent of the 'Source Tag Management' permission (required)
+        :param str permission: The permission to grant. Note that <code>host_tag_management</code> is the equivalent of the **Source Tag Management** permission, <code>monitored_application_service_management</code> is the equivalent of the **Integrations** permission, <code>agent_management</code> is the equivalent of the **Proxies** permission. (required)
         :param list[str] body: List of accounts the specified permission to be granted to
         :return: UserModel
                  If the method is called asynchronously,
@@ -1873,14 +1770,14 @@ class AccountUserAndServiceAccountApi(object):
     def invite_user_accounts(self, **kwargs):  # noqa: E501
         """Invite user accounts with given user groups and permissions.  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.invite_user_accounts(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param list[UserToCreate] body: Example Body:  <pre>[ {   \"emailAddress\": \"user@example.com\",   \"groups\": [     \"user_management\"   ],   \"userGroups\": [     \"8b23136b-ecd2-4cb5-8c92-62477dcc4090\"   ],   \"roles\": [     \"Role\"   ],   \"ingestionPolicies\": [     \"policyId1\",     \"policyId2\"   ] } ]</pre>
+        :param list[UserToCreate] body: Example Body:  <pre>[ {   \"emailAddress\": \"user@example.com\",   \"groups\": [     \"user_management\"   ],   \"userGroups\": [     \"8b23136b-ecd2-4cb5-8c92-62477dcc4090\"   ],   \"roles\": [     \"Role\"   ], } ]</pre>
         :return: UserModel
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1895,14 +1792,14 @@ class AccountUserAndServiceAccountApi(object):
     def invite_user_accounts_with_http_info(self, **kwargs):  # noqa: E501
         """Invite user accounts with given user groups and permissions.  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.invite_user_accounts_with_http_info(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param list[UserToCreate] body: Example Body:  <pre>[ {   \"emailAddress\": \"user@example.com\",   \"groups\": [     \"user_management\"   ],   \"userGroups\": [     \"8b23136b-ecd2-4cb5-8c92-62477dcc4090\"   ],   \"roles\": [     \"Role\"   ],   \"ingestionPolicies\": [     \"policyId1\",     \"policyId2\"   ] } ]</pre>
+        :param list[UserToCreate] body: Example Body:  <pre>[ {   \"emailAddress\": \"user@example.com\",   \"groups\": [     \"user_management\"   ],   \"userGroups\": [     \"8b23136b-ecd2-4cb5-8c92-62477dcc4090\"   ],   \"roles\": [     \"Role\"   ], } ]</pre>
         :return: UserModel
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1968,7 +1865,7 @@ class AccountUserAndServiceAccountApi(object):
     def remove_account_from_roles(self, id, **kwargs):  # noqa: E501
         """Removes specific roles from the account (user or service account)  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.remove_account_from_roles(id, async_req=True)
@@ -1991,7 +1888,7 @@ class AccountUserAndServiceAccountApi(object):
     def remove_account_from_roles_with_http_info(self, id, **kwargs):  # noqa: E501
         """Removes specific roles from the account (user or service account)  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.remove_account_from_roles_with_http_info(id, async_req=True)
@@ -2071,7 +1968,7 @@ class AccountUserAndServiceAccountApi(object):
     def remove_account_from_user_groups(self, id, **kwargs):  # noqa: E501
         """Removes specific groups from the account (user or service account)  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.remove_account_from_user_groups(id, async_req=True)
@@ -2094,7 +1991,7 @@ class AccountUserAndServiceAccountApi(object):
     def remove_account_from_user_groups_with_http_info(self, id, **kwargs):  # noqa: E501
         """Removes specific groups from the account (user or service account)  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.remove_account_from_user_groups_with_http_info(id, async_req=True)
@@ -2171,200 +2068,10 @@ class AccountUserAndServiceAccountApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def remove_ingestion_policies(self, **kwargs):  # noqa: E501
-        """Removes ingestion policies from multiple accounts  # noqa: E501
-
-          # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.remove_ingestion_policies(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param list[str] body: identifiers of list of accounts from which ingestion policies should be removed
-        :return: ResponseContainer
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.remove_ingestion_policies_with_http_info(**kwargs)  # noqa: E501
-        else:
-            (data) = self.remove_ingestion_policies_with_http_info(**kwargs)  # noqa: E501
-            return data
-
-    def remove_ingestion_policies_with_http_info(self, **kwargs):  # noqa: E501
-        """Removes ingestion policies from multiple accounts  # noqa: E501
-
-          # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.remove_ingestion_policies_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param list[str] body: identifiers of list of accounts from which ingestion policies should be removed
-        :return: ResponseContainer
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['body']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method remove_ingestion_policies" % key
-                )
-            params[key] = val
-        del params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['api_key']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/api/v2/account/removeingestionpolicies', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='ResponseContainer',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def remove_single_ingestion_policy(self, **kwargs):  # noqa: E501
-        """Removes single ingestion policy from multiple accounts  # noqa: E501
-
-          # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.remove_single_ingestion_policy(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param IngestionPolicyMapping body: Example Body:  <pre>{   \"ingestionPolicyId\": \"Ingestion policy identifier\",   \"accounts\": [   \"account1\",   \"account2\",   \"account3\"   ],   \"groups\": [   \"group1\",   \"group2\"   ] }</pre>
-        :return: ResponseContainerUserDTO
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.remove_single_ingestion_policy_with_http_info(**kwargs)  # noqa: E501
-        else:
-            (data) = self.remove_single_ingestion_policy_with_http_info(**kwargs)  # noqa: E501
-            return data
-
-    def remove_single_ingestion_policy_with_http_info(self, **kwargs):  # noqa: E501
-        """Removes single ingestion policy from multiple accounts  # noqa: E501
-
-          # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.remove_single_ingestion_policy_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param IngestionPolicyMapping body: Example Body:  <pre>{   \"ingestionPolicyId\": \"Ingestion policy identifier\",   \"accounts\": [   \"account1\",   \"account2\",   \"account3\"   ],   \"groups\": [   \"group1\",   \"group2\"   ] }</pre>
-        :return: ResponseContainerUserDTO
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['body']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method remove_single_ingestion_policy" % key
-                )
-            params[key] = val
-        del params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['api_key']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/api/v2/account/removeIngestionPolicy', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='ResponseContainerUserDTO',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
     def revoke_account_permission(self, id, permission, **kwargs):  # noqa: E501
         """Revokes a specific permission from account (user or service account)  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: For original Tanzu Observability instances, applies to user accounts and service accounts. For Tanzu Observability instances that are onboarded to VMware Cloud services, applies only to service accounts.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.revoke_account_permission(id, permission, async_req=True)
@@ -2387,7 +2094,7 @@ class AccountUserAndServiceAccountApi(object):
     def revoke_account_permission_with_http_info(self, id, permission, **kwargs):  # noqa: E501
         """Revokes a specific permission from account (user or service account)  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: For original Tanzu Observability instances, applies to user accounts and service accounts. For Tanzu Observability instances that are onboarded to VMware Cloud services, applies only to service accounts.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.revoke_account_permission_with_http_info(id, permission, async_req=True)
@@ -2469,16 +2176,16 @@ class AccountUserAndServiceAccountApi(object):
             collection_formats=collection_formats)
 
     def revoke_permission_from_accounts(self, permission, **kwargs):  # noqa: E501
-        """Revokes a specific permission from multiple accounts (users or service accounts)  # noqa: E501
+        """Revoke a permission from accounts (users or service accounts)  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: For original Tanzu Observability instances, applies to user accounts and service accounts. For Tanzu Observability instances that are onboarded to VMware Cloud services, applies only to service accounts.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.revoke_permission_from_accounts(permission, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str permission: Permission to revoke from the accounts. Please note that 'host_tag_management' is the equivalent of the 'Source Tag Management' permission (required)
+        :param str permission: The permission to revoke. Note that <code>host_tag_management</code> is the equivalent of the **Source Tag Management** permission, <code>monitored_application_service_management</code> is the equivalent of the **Integrations** permission, <code>agent_management</code> is the equivalent of the **Proxies** permission. (required)
         :param list[str] body: List of accounts the specified permission to be revoked from
         :return: UserModel
                  If the method is called asynchronously,
@@ -2492,16 +2199,16 @@ class AccountUserAndServiceAccountApi(object):
             return data
 
     def revoke_permission_from_accounts_with_http_info(self, permission, **kwargs):  # noqa: E501
-        """Revokes a specific permission from multiple accounts (users or service accounts)  # noqa: E501
+        """Revoke a permission from accounts (users or service accounts)  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: For original Tanzu Observability instances, applies to user accounts and service accounts. For Tanzu Observability instances that are onboarded to VMware Cloud services, applies only to service accounts.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.revoke_permission_from_accounts_with_http_info(permission, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str permission: Permission to revoke from the accounts. Please note that 'host_tag_management' is the equivalent of the 'Source Tag Management' permission (required)
+        :param str permission: The permission to revoke. Note that <code>host_tag_management</code> is the equivalent of the **Source Tag Management** permission, <code>monitored_application_service_management</code> is the equivalent of the **Integrations** permission, <code>agent_management</code> is the equivalent of the **Proxies** permission. (required)
         :param list[str] body: List of accounts the specified permission to be revoked from
         :return: UserModel
                  If the method is called asynchronously,
@@ -2675,9 +2382,9 @@ class AccountUserAndServiceAccountApi(object):
             collection_formats=collection_formats)
 
     def update_user_account(self, id, **kwargs):  # noqa: E501
-        """Update user with given user groups, permissions and ingestion policy.  # noqa: E501
+        """Update user with given user groups and permissions.  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.update_user_account(id, async_req=True)
@@ -2685,7 +2392,7 @@ class AccountUserAndServiceAccountApi(object):
 
         :param async_req bool
         :param str id: (required)
-        :param UserRequestDTO body: Example Body:  <pre>{   \"identifier\": \"user@example.com\",   \"groups\": [     \"user_management\"   ],   \"userGroups\": [     \"8b23136b-ecd2-4cb5-8c92-62477dcc4090\"   ],   \"ingestionPolicies\": [     \"policy_id\"   ],   \"roles\": [     \"Role\"   ] }</pre>
+        :param UserRequestDTO body: Example Body:  <pre>{   \"identifier\": \"user@example.com\",   \"groups\": [     \"user_management\"   ],   \"userGroups\": [     \"8b23136b-ecd2-4cb5-8c92-62477dcc4090\"   ],   \"roles\": [     \"Role\"   ] }</pre>
         :return: UserModel
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2698,9 +2405,9 @@ class AccountUserAndServiceAccountApi(object):
             return data
 
     def update_user_account_with_http_info(self, id, **kwargs):  # noqa: E501
-        """Update user with given user groups, permissions and ingestion policy.  # noqa: E501
+        """Update user with given user groups and permissions.  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.update_user_account_with_http_info(id, async_req=True)
@@ -2708,7 +2415,7 @@ class AccountUserAndServiceAccountApi(object):
 
         :param async_req bool
         :param str id: (required)
-        :param UserRequestDTO body: Example Body:  <pre>{   \"identifier\": \"user@example.com\",   \"groups\": [     \"user_management\"   ],   \"userGroups\": [     \"8b23136b-ecd2-4cb5-8c92-62477dcc4090\"   ],   \"ingestionPolicies\": [     \"policy_id\"   ],   \"roles\": [     \"Role\"   ] }</pre>
+        :param UserRequestDTO body: Example Body:  <pre>{   \"identifier\": \"user@example.com\",   \"groups\": [     \"user_management\"   ],   \"userGroups\": [     \"8b23136b-ecd2-4cb5-8c92-62477dcc4090\"   ],   \"roles\": [     \"Role\"   ] }</pre>
         :return: UserModel
                  If the method is called asynchronously,
                  returns the request thread.

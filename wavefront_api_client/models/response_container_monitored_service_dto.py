@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Wavefront REST API Documentation
+    Tanzu Observability REST API Documentation
 
-    <p>The Wavefront REST API enables you to interact with Wavefront servers using standard REST API tools. You can use the REST API to automate commonly executed operations such as automatically tagging sources.</p><p>When you make REST API calls outside the Wavefront REST API documentation you must add the header \"Authorization: Bearer &lt;&lt;API-TOKEN&gt;&gt;\" to your HTTP requests.</p>  # noqa: E501
+    <p>The REST API enables you to interact with the Tanzu Observability service by using standard REST API tools. You can use the REST API to automate commonly executed operations, for example to tag sources automatically.</p><p>When you make REST API calls outside the REST API documentation UI, to authenticate to the service, you must use an API token associated with a user account or a service account. For information on how to get the API token and examples, see <a href=\"http://docs.wavefront.com/using_wavefront_api.html\">Use the Tanzu Observability REST API.</a></p>  # noqa: E501
 
     OpenAPI spec version: v2
     Contact: chitimba@wavefront.com
@@ -33,28 +33,54 @@ class ResponseContainerMonitoredServiceDTO(object):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'debug_info': 'list[str]',
         'response': 'MonitoredServiceDTO',
         'status': 'ResponseStatus'
     }
 
     attribute_map = {
+        'debug_info': 'debugInfo',
         'response': 'response',
         'status': 'status'
     }
 
-    def __init__(self, response=None, status=None, _configuration=None):  # noqa: E501
+    def __init__(self, debug_info=None, response=None, status=None, _configuration=None):  # noqa: E501
         """ResponseContainerMonitoredServiceDTO - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
         self._configuration = _configuration
 
+        self._debug_info = None
         self._response = None
         self._status = None
         self.discriminator = None
 
+        if debug_info is not None:
+            self.debug_info = debug_info
         if response is not None:
             self.response = response
         self.status = status
+
+    @property
+    def debug_info(self):
+        """Gets the debug_info of this ResponseContainerMonitoredServiceDTO.  # noqa: E501
+
+
+        :return: The debug_info of this ResponseContainerMonitoredServiceDTO.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._debug_info
+
+    @debug_info.setter
+    def debug_info(self, debug_info):
+        """Sets the debug_info of this ResponseContainerMonitoredServiceDTO.
+
+
+        :param debug_info: The debug_info of this ResponseContainerMonitoredServiceDTO.  # noqa: E501
+        :type: list[str]
+        """
+
+        self._debug_info = debug_info
 
     @property
     def response(self):

@@ -3,9 +3,9 @@
 # flake8: noqa
 
 """
-    Wavefront REST API Documentation
+    Tanzu Observability REST API Documentation
 
-    <p>The Wavefront REST API enables you to interact with Wavefront servers using standard REST API tools. You can use the REST API to automate commonly executed operations such as automatically tagging sources.</p><p>When you make REST API calls outside the Wavefront REST API documentation you must add the header \"Authorization: Bearer &lt;&lt;API-TOKEN&gt;&gt;\" to your HTTP requests.</p>  # noqa: E501
+    <p>The REST API enables you to interact with the Tanzu Observability service by using standard REST API tools. You can use the REST API to automate commonly executed operations, for example to tag sources automatically.</p><p>When you make REST API calls outside the REST API documentation UI, to authenticate to the service, you must use an API token associated with a user account or a service account. For information on how to get the API token and examples, see <a href=\"http://docs.wavefront.com/using_wavefront_api.html\">Use the Tanzu Observability REST API.</a></p>  # noqa: E501
 
     OpenAPI spec version: v2
     Contact: chitimba@wavefront.com
@@ -19,6 +19,7 @@ from __future__ import absolute_import
 from wavefront_api_client.api.access_policy_api import AccessPolicyApi
 from wavefront_api_client.api.account__user_and_service_account_api import AccountUserAndServiceAccountApi
 from wavefront_api_client.api.alert_api import AlertApi
+from wavefront_api_client.api.alert_analytics_api import AlertAnalyticsApi
 from wavefront_api_client.api.api_token_api import ApiTokenApi
 from wavefront_api_client.api.cloud_integration_api import CloudIntegrationApi
 from wavefront_api_client.api.dashboard_api import DashboardApi
@@ -31,7 +32,6 @@ from wavefront_api_client.api.integration_api import IntegrationApi
 from wavefront_api_client.api.maintenance_window_api import MaintenanceWindowApi
 from wavefront_api_client.api.message_api import MessageApi
 from wavefront_api_client.api.metric_api import MetricApi
-from wavefront_api_client.api.metrics_policy_api import MetricsPolicyApi
 from wavefront_api_client.api.monitored_application_api import MonitoredApplicationApi
 from wavefront_api_client.api.monitored_service_api import MonitoredServiceApi
 from wavefront_api_client.api.notificant_api import NotificantApi
@@ -46,11 +46,13 @@ from wavefront_api_client.api.saved_search_api import SavedSearchApi
 from wavefront_api_client.api.saved_traces_search_api import SavedTracesSearchApi
 from wavefront_api_client.api.saved_traces_search_group_api import SavedTracesSearchGroupApi
 from wavefront_api_client.api.search_api import SearchApi
+from wavefront_api_client.api.security_policy_api import SecurityPolicyApi
 from wavefront_api_client.api.source_api import SourceApi
 from wavefront_api_client.api.span_sampling_policy_api import SpanSamplingPolicyApi
 from wavefront_api_client.api.usage_api import UsageApi
 from wavefront_api_client.api.user_api import UserApi
 from wavefront_api_client.api.user_group_api import UserGroupApi
+from wavefront_api_client.api.wavefront_api import WavefrontApi
 from wavefront_api_client.api.webhook_api import WebhookApi
 
 # import ApiClient
@@ -66,12 +68,18 @@ from wavefront_api_client.models.access_policy import AccessPolicy
 from wavefront_api_client.models.access_policy_rule_dto import AccessPolicyRuleDTO
 from wavefront_api_client.models.account import Account
 from wavefront_api_client.models.alert import Alert
+from wavefront_api_client.models.alert_analytics_summary import AlertAnalyticsSummary
+from wavefront_api_client.models.alert_analytics_summary_detail import AlertAnalyticsSummaryDetail
 from wavefront_api_client.models.alert_dashboard import AlertDashboard
+from wavefront_api_client.models.alert_error_group_info import AlertErrorGroupInfo
+from wavefront_api_client.models.alert_error_group_summary import AlertErrorGroupSummary
+from wavefront_api_client.models.alert_error_summary import AlertErrorSummary
 from wavefront_api_client.models.alert_min import AlertMin
 from wavefront_api_client.models.alert_route import AlertRoute
 from wavefront_api_client.models.alert_source import AlertSource
 from wavefront_api_client.models.annotation import Annotation
 from wavefront_api_client.models.anomaly import Anomaly
+from wavefront_api_client.models.api_token_model import ApiTokenModel
 from wavefront_api_client.models.app_dynamics_configuration import AppDynamicsConfiguration
 from wavefront_api_client.models.app_search_filter import AppSearchFilter
 from wavefront_api_client.models.app_search_filter_value import AppSearchFilterValue
@@ -86,6 +94,7 @@ from wavefront_api_client.models.class_loader import ClassLoader
 from wavefront_api_client.models.cloud_integration import CloudIntegration
 from wavefront_api_client.models.cloud_trail_configuration import CloudTrailConfiguration
 from wavefront_api_client.models.cloud_watch_configuration import CloudWatchConfiguration
+from wavefront_api_client.models.cluster_info_dto import ClusterInfoDTO
 from wavefront_api_client.models.conversion import Conversion
 from wavefront_api_client.models.conversion_object import ConversionObject
 from wavefront_api_client.models.customer_facing_user_object import CustomerFacingUserObject
@@ -94,6 +103,8 @@ from wavefront_api_client.models.dashboard_min import DashboardMin
 from wavefront_api_client.models.dashboard_parameter_value import DashboardParameterValue
 from wavefront_api_client.models.dashboard_section import DashboardSection
 from wavefront_api_client.models.dashboard_section_row import DashboardSectionRow
+from wavefront_api_client.models.default_saved_app_map_search import DefaultSavedAppMapSearch
+from wavefront_api_client.models.default_saved_traces_search import DefaultSavedTracesSearch
 from wavefront_api_client.models.derived_metric_definition import DerivedMetricDefinition
 from wavefront_api_client.models.dynatrace_configuration import DynatraceConfiguration
 from wavefront_api_client.models.ec2_configuration import EC2Configuration
@@ -111,8 +122,10 @@ from wavefront_api_client.models.gcp_billing_configuration import GCPBillingConf
 from wavefront_api_client.models.gcp_configuration import GCPConfiguration
 from wavefront_api_client.models.history_entry import HistoryEntry
 from wavefront_api_client.models.history_response import HistoryResponse
-from wavefront_api_client.models.ingestion_policy import IngestionPolicy
-from wavefront_api_client.models.ingestion_policy_mapping import IngestionPolicyMapping
+from wavefront_api_client.models.ingestion_policy_alert import IngestionPolicyAlert
+from wavefront_api_client.models.ingestion_policy_metadata import IngestionPolicyMetadata
+from wavefront_api_client.models.ingestion_policy_read_model import IngestionPolicyReadModel
+from wavefront_api_client.models.ingestion_policy_write_model import IngestionPolicyWriteModel
 from wavefront_api_client.models.install_alerts import InstallAlerts
 from wavefront_api_client.models.integration import Integration
 from wavefront_api_client.models.integration_alert import IntegrationAlert
@@ -125,6 +138,8 @@ from wavefront_api_client.models.json_node import JsonNode
 from wavefront_api_client.models.kubernetes_component import KubernetesComponent
 from wavefront_api_client.models.kubernetes_component_status import KubernetesComponentStatus
 from wavefront_api_client.models.logical_type import LogicalType
+from wavefront_api_client.models.logs_sort import LogsSort
+from wavefront_api_client.models.logs_table import LogsTable
 from wavefront_api_client.models.maintenance_window import MaintenanceWindow
 from wavefront_api_client.models.message import Message
 from wavefront_api_client.models.metric_details import MetricDetails
@@ -146,8 +161,10 @@ from wavefront_api_client.models.package import Package
 from wavefront_api_client.models.paged import Paged
 from wavefront_api_client.models.paged_account import PagedAccount
 from wavefront_api_client.models.paged_alert import PagedAlert
+from wavefront_api_client.models.paged_alert_analytics_summary_detail import PagedAlertAnalyticsSummaryDetail
 from wavefront_api_client.models.paged_alert_with_stats import PagedAlertWithStats
 from wavefront_api_client.models.paged_anomaly import PagedAnomaly
+from wavefront_api_client.models.paged_api_token_model import PagedApiTokenModel
 from wavefront_api_client.models.paged_cloud_integration import PagedCloudIntegration
 from wavefront_api_client.models.paged_customer_facing_user_object import PagedCustomerFacingUserObject
 from wavefront_api_client.models.paged_dashboard import PagedDashboard
@@ -155,7 +172,7 @@ from wavefront_api_client.models.paged_derived_metric_definition import PagedDer
 from wavefront_api_client.models.paged_derived_metric_definition_with_stats import PagedDerivedMetricDefinitionWithStats
 from wavefront_api_client.models.paged_event import PagedEvent
 from wavefront_api_client.models.paged_external_link import PagedExternalLink
-from wavefront_api_client.models.paged_ingestion_policy import PagedIngestionPolicy
+from wavefront_api_client.models.paged_ingestion_policy_read_model import PagedIngestionPolicyReadModel
 from wavefront_api_client.models.paged_integration import PagedIntegration
 from wavefront_api_client.models.paged_maintenance_window import PagedMaintenanceWindow
 from wavefront_api_client.models.paged_message import PagedMessage
@@ -198,25 +215,34 @@ from wavefront_api_client.models.response_container_access_policy import Respons
 from wavefront_api_client.models.response_container_access_policy_action import ResponseContainerAccessPolicyAction
 from wavefront_api_client.models.response_container_account import ResponseContainerAccount
 from wavefront_api_client.models.response_container_alert import ResponseContainerAlert
+from wavefront_api_client.models.response_container_alert_analytics_summary import ResponseContainerAlertAnalyticsSummary
+from wavefront_api_client.models.response_container_api_token_model import ResponseContainerApiTokenModel
 from wavefront_api_client.models.response_container_cloud_integration import ResponseContainerCloudIntegration
+from wavefront_api_client.models.response_container_cluster_info_dto import ResponseContainerClusterInfoDTO
 from wavefront_api_client.models.response_container_dashboard import ResponseContainerDashboard
+from wavefront_api_client.models.response_container_default_saved_app_map_search import ResponseContainerDefaultSavedAppMapSearch
+from wavefront_api_client.models.response_container_default_saved_traces_search import ResponseContainerDefaultSavedTracesSearch
 from wavefront_api_client.models.response_container_derived_metric_definition import ResponseContainerDerivedMetricDefinition
 from wavefront_api_client.models.response_container_event import ResponseContainerEvent
 from wavefront_api_client.models.response_container_external_link import ResponseContainerExternalLink
 from wavefront_api_client.models.response_container_facet_response import ResponseContainerFacetResponse
 from wavefront_api_client.models.response_container_facets_response_container import ResponseContainerFacetsResponseContainer
 from wavefront_api_client.models.response_container_history_response import ResponseContainerHistoryResponse
-from wavefront_api_client.models.response_container_ingestion_policy import ResponseContainerIngestionPolicy
+from wavefront_api_client.models.response_container_ingestion_policy_read_model import ResponseContainerIngestionPolicyReadModel
 from wavefront_api_client.models.response_container_integration import ResponseContainerIntegration
 from wavefront_api_client.models.response_container_integration_status import ResponseContainerIntegrationStatus
 from wavefront_api_client.models.response_container_list_access_control_list_read_dto import ResponseContainerListAccessControlListReadDTO
+from wavefront_api_client.models.response_container_list_alert_error_group_info import ResponseContainerListAlertErrorGroupInfo
+from wavefront_api_client.models.response_container_list_api_token_model import ResponseContainerListApiTokenModel
 from wavefront_api_client.models.response_container_list_integration import ResponseContainerListIntegration
 from wavefront_api_client.models.response_container_list_integration_manifest_group import ResponseContainerListIntegrationManifestGroup
 from wavefront_api_client.models.response_container_list_notification_messages import ResponseContainerListNotificationMessages
 from wavefront_api_client.models.response_container_list_service_account import ResponseContainerListServiceAccount
 from wavefront_api_client.models.response_container_list_string import ResponseContainerListString
 from wavefront_api_client.models.response_container_list_user_api_token import ResponseContainerListUserApiToken
+from wavefront_api_client.models.response_container_list_user_dto import ResponseContainerListUserDTO
 from wavefront_api_client.models.response_container_maintenance_window import ResponseContainerMaintenanceWindow
+from wavefront_api_client.models.response_container_map import ResponseContainerMap
 from wavefront_api_client.models.response_container_map_string_integer import ResponseContainerMapStringInteger
 from wavefront_api_client.models.response_container_map_string_integration_status import ResponseContainerMapStringIntegrationStatus
 from wavefront_api_client.models.response_container_message import ResponseContainerMessage
@@ -227,8 +253,10 @@ from wavefront_api_client.models.response_container_monitored_service_dto import
 from wavefront_api_client.models.response_container_notificant import ResponseContainerNotificant
 from wavefront_api_client.models.response_container_paged_account import ResponseContainerPagedAccount
 from wavefront_api_client.models.response_container_paged_alert import ResponseContainerPagedAlert
+from wavefront_api_client.models.response_container_paged_alert_analytics_summary_detail import ResponseContainerPagedAlertAnalyticsSummaryDetail
 from wavefront_api_client.models.response_container_paged_alert_with_stats import ResponseContainerPagedAlertWithStats
 from wavefront_api_client.models.response_container_paged_anomaly import ResponseContainerPagedAnomaly
+from wavefront_api_client.models.response_container_paged_api_token_model import ResponseContainerPagedApiTokenModel
 from wavefront_api_client.models.response_container_paged_cloud_integration import ResponseContainerPagedCloudIntegration
 from wavefront_api_client.models.response_container_paged_customer_facing_user_object import ResponseContainerPagedCustomerFacingUserObject
 from wavefront_api_client.models.response_container_paged_dashboard import ResponseContainerPagedDashboard
@@ -236,7 +264,7 @@ from wavefront_api_client.models.response_container_paged_derived_metric_definit
 from wavefront_api_client.models.response_container_paged_derived_metric_definition_with_stats import ResponseContainerPagedDerivedMetricDefinitionWithStats
 from wavefront_api_client.models.response_container_paged_event import ResponseContainerPagedEvent
 from wavefront_api_client.models.response_container_paged_external_link import ResponseContainerPagedExternalLink
-from wavefront_api_client.models.response_container_paged_ingestion_policy import ResponseContainerPagedIngestionPolicy
+from wavefront_api_client.models.response_container_paged_ingestion_policy_read_model import ResponseContainerPagedIngestionPolicyReadModel
 from wavefront_api_client.models.response_container_paged_integration import ResponseContainerPagedIntegration
 from wavefront_api_client.models.response_container_paged_maintenance_window import ResponseContainerPagedMaintenanceWindow
 from wavefront_api_client.models.response_container_paged_message import ResponseContainerPagedMessage
@@ -282,7 +310,9 @@ from wavefront_api_client.models.response_container_user_group_model import Resp
 from wavefront_api_client.models.response_container_validated_users_dto import ResponseContainerValidatedUsersDTO
 from wavefront_api_client.models.response_container_void import ResponseContainerVoid
 from wavefront_api_client.models.response_status import ResponseStatus
+from wavefront_api_client.models.role_create_dto import RoleCreateDTO
 from wavefront_api_client.models.role_dto import RoleDTO
+from wavefront_api_client.models.role_update_dto import RoleUpdateDTO
 from wavefront_api_client.models.saved_app_map_search import SavedAppMapSearch
 from wavefront_api_client.models.saved_app_map_search_group import SavedAppMapSearchGroup
 from wavefront_api_client.models.saved_search import SavedSearch
@@ -292,6 +322,7 @@ from wavefront_api_client.models.schema import Schema
 from wavefront_api_client.models.search_query import SearchQuery
 from wavefront_api_client.models.service_account import ServiceAccount
 from wavefront_api_client.models.service_account_write import ServiceAccountWrite
+from wavefront_api_client.models.setup import Setup
 from wavefront_api_client.models.snowflake_configuration import SnowflakeConfiguration
 from wavefront_api_client.models.sortable_search_request import SortableSearchRequest
 from wavefront_api_client.models.sorting import Sorting
@@ -305,11 +336,9 @@ from wavefront_api_client.models.stats_model_internal_use import StatsModelInter
 from wavefront_api_client.models.stripe import Stripe
 from wavefront_api_client.models.tags_response import TagsResponse
 from wavefront_api_client.models.target_info import TargetInfo
-from wavefront_api_client.models.tesla_configuration import TeslaConfiguration
 from wavefront_api_client.models.timeseries import Timeseries
 from wavefront_api_client.models.trace import Trace
 from wavefront_api_client.models.triage_dashboard import TriageDashboard
-from wavefront_api_client.models.tuple import Tuple
 from wavefront_api_client.models.tuple_result import TupleResult
 from wavefront_api_client.models.tuple_value_result import TupleValueResult
 from wavefront_api_client.models.user_api_token import UserApiToken

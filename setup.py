@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Wavefront REST API Documentation
+    Tanzu Observability REST API Documentation
 
-    <p>The Wavefront REST API enables you to interact with Wavefront servers using standard REST API tools. You can use the REST API to automate commonly executed operations such as automatically tagging sources.</p><p>When you make REST API calls outside the Wavefront REST API documentation you must add the header \"Authorization: Bearer &lt;&lt;API-TOKEN&gt;&gt;\" to your HTTP requests.</p>  # noqa: E501
+    <p>The REST API enables you to interact with the Tanzu Observability service by using standard REST API tools. You can use the REST API to automate commonly executed operations, for example to tag sources automatically.</p><p>When you make REST API calls outside the REST API documentation UI, to authenticate to the service, you must use an API token associated with a user account or a service account. For information on how to get the API token and examples, see <a href=\"http://docs.wavefront.com/using_wavefront_api.html\">Use the Tanzu Observability REST API.</a></p>  # noqa: E501
 
     OpenAPI spec version: v2
     Contact: chitimba@wavefront.com
@@ -14,7 +14,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "wavefront-api-client"
-VERSION = "2.124.1"
+VERSION = "2.223.1"
 # To install the library, run the following
 #
 # python setup.py install
@@ -33,14 +33,14 @@ REQUIRES = [
 setup(
     name=NAME,
     version=VERSION,
-    description="Wavefront REST API Documentation",
+    description="Tanzu Observability REST API Documentation",
     author_email="chitimba@wavefront.com",
     url="https://github.com/wavefrontHQ/python-client",
-    keywords=["Swagger", "Wavefront REST API Documentation"],
+    keywords=["Swagger", "Tanzu Observability REST API Documentation"],
     install_requires=REQUIRES,
     packages=find_packages(),
     include_package_data=True,
     long_description="""\
-    &lt;p&gt;The Wavefront REST API enables you to interact with Wavefront servers using standard REST API tools. You can use the REST API to automate commonly executed operations such as automatically tagging sources.&lt;/p&gt;&lt;p&gt;When you make REST API calls outside the Wavefront REST API documentation you must add the header \&quot;Authorization: Bearer &amp;lt;&amp;lt;API-TOKEN&amp;gt;&amp;gt;\&quot; to your HTTP requests.&lt;/p&gt;  # noqa: E501
+    &lt;p&gt;The REST API enables you to interact with the Tanzu Observability service by using standard REST API tools. You can use the REST API to automate commonly executed operations, for example to tag sources automatically.&lt;/p&gt;&lt;p&gt;When you make REST API calls outside the REST API documentation UI, to authenticate to the service, you must use an API token associated with a user account or a service account. For information on how to get the API token and examples, see &lt;a href&#x3D;\&quot;http://docs.wavefront.com/using_wavefront_api.html\&quot;&gt;Use the Tanzu Observability REST API.&lt;/a&gt;&lt;/p&gt;  # noqa: E501
     """
 )

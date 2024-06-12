@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Wavefront REST API Documentation
+    Tanzu Observability REST API Documentation
 
-    <p>The Wavefront REST API enables you to interact with Wavefront servers using standard REST API tools. You can use the REST API to automate commonly executed operations such as automatically tagging sources.</p><p>When you make REST API calls outside the Wavefront REST API documentation you must add the header \"Authorization: Bearer &lt;&lt;API-TOKEN&gt;&gt;\" to your HTTP requests.</p>  # noqa: E501
+    <p>The REST API enables you to interact with the Tanzu Observability service by using standard REST API tools. You can use the REST API to automate commonly executed operations, for example to tag sources automatically.</p><p>When you make REST API calls outside the REST API documentation UI, to authenticate to the service, you must use an API token associated with a user account or a service account. For information on how to get the API token and examples, see <a href=\"http://docs.wavefront.com/using_wavefront_api.html\">Use the Tanzu Observability REST API.</a></p>  # noqa: E501
 
     OpenAPI spec version: v2
     Contact: chitimba@wavefront.com
@@ -73,6 +73,7 @@ class Alert(object):
         'in_maintenance_host_label_pairs': 'list[SourceLabelPair]',
         'in_trash': 'bool',
         'include_obsolete_metrics': 'bool',
+        'ingestion_policy_id': 'str',
         'last_error_message': 'str',
         'last_event_time': 'int',
         'last_failed_time': 'int',
@@ -158,6 +159,7 @@ class Alert(object):
         'in_maintenance_host_label_pairs': 'inMaintenanceHostLabelPairs',
         'in_trash': 'inTrash',
         'include_obsolete_metrics': 'includeObsoleteMetrics',
+        'ingestion_policy_id': 'ingestionPolicyId',
         'last_error_message': 'lastErrorMessage',
         'last_event_time': 'lastEventTime',
         'last_failed_time': 'lastFailedTime',
@@ -202,7 +204,7 @@ class Alert(object):
         'updater_id': 'updaterId'
     }
 
-    def __init__(self, acl=None, active_maintenance_windows=None, additional_information=None, alert_chart_base=None, alert_chart_description=None, alert_chart_units=None, alert_sources=None, alert_triage_dashboards=None, alert_type=None, alerts_last_day=None, alerts_last_month=None, alerts_last_week=None, application=None, chart_attributes=None, chart_settings=None, condition=None, condition_qb_enabled=None, condition_qb_serialization=None, condition_query_type=None, conditions=None, create_user_id=None, created=None, created_epoch_millis=None, creator_id=None, deleted=None, display_expression=None, display_expression_qb_enabled=None, display_expression_qb_serialization=None, display_expression_query_type=None, enable_pd_incident_by_series=None, evaluate_realtime_data=None, event=None, failing_host_label_pair_links=None, failing_host_label_pairs=None, hidden=None, hosts_used=None, id=None, in_maintenance_host_label_pairs=None, in_trash=None, include_obsolete_metrics=None, last_error_message=None, last_event_time=None, last_failed_time=None, last_notification_millis=None, last_processed_millis=None, last_query_time=None, metrics_used=None, minutes=None, modify_acl_access=None, name=None, no_data_event=None, notificants=None, notification_resend_frequency_minutes=None, num_points_in_failure_frame=None, orphan=None, points_scanned_at_last_query=None, prefiring_host_label_pairs=None, process_rate_minutes=None, query_failing=None, query_syntax_error=None, resolve_after_minutes=None, runbook_links=None, secure_metric_details=None, service=None, severity=None, severity_list=None, snoozed=None, sort_attr=None, status=None, system_alert_version=None, system_owned=None, tagpaths=None, tags=None, target=None, target_endpoints=None, target_info=None, targets=None, triage_dashboards=None, update_user_id=None, updated=None, updated_epoch_millis=None, updater_id=None, _configuration=None):  # noqa: E501
+    def __init__(self, acl=None, active_maintenance_windows=None, additional_information=None, alert_chart_base=None, alert_chart_description=None, alert_chart_units=None, alert_sources=None, alert_triage_dashboards=None, alert_type=None, alerts_last_day=None, alerts_last_month=None, alerts_last_week=None, application=None, chart_attributes=None, chart_settings=None, condition=None, condition_qb_enabled=None, condition_qb_serialization=None, condition_query_type=None, conditions=None, create_user_id=None, created=None, created_epoch_millis=None, creator_id=None, deleted=None, display_expression=None, display_expression_qb_enabled=None, display_expression_qb_serialization=None, display_expression_query_type=None, enable_pd_incident_by_series=None, evaluate_realtime_data=None, event=None, failing_host_label_pair_links=None, failing_host_label_pairs=None, hidden=None, hosts_used=None, id=None, in_maintenance_host_label_pairs=None, in_trash=None, include_obsolete_metrics=None, ingestion_policy_id=None, last_error_message=None, last_event_time=None, last_failed_time=None, last_notification_millis=None, last_processed_millis=None, last_query_time=None, metrics_used=None, minutes=None, modify_acl_access=None, name=None, no_data_event=None, notificants=None, notification_resend_frequency_minutes=None, num_points_in_failure_frame=None, orphan=None, points_scanned_at_last_query=None, prefiring_host_label_pairs=None, process_rate_minutes=None, query_failing=None, query_syntax_error=None, resolve_after_minutes=None, runbook_links=None, secure_metric_details=None, service=None, severity=None, severity_list=None, snoozed=None, sort_attr=None, status=None, system_alert_version=None, system_owned=None, tagpaths=None, tags=None, target=None, target_endpoints=None, target_info=None, targets=None, triage_dashboards=None, update_user_id=None, updated=None, updated_epoch_millis=None, updater_id=None, _configuration=None):  # noqa: E501
         """Alert - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -248,6 +250,7 @@ class Alert(object):
         self._in_maintenance_host_label_pairs = None
         self._in_trash = None
         self._include_obsolete_metrics = None
+        self._ingestion_policy_id = None
         self._last_error_message = None
         self._last_event_time = None
         self._last_failed_time = None
@@ -371,6 +374,8 @@ class Alert(object):
             self.in_trash = in_trash
         if include_obsolete_metrics is not None:
             self.include_obsolete_metrics = include_obsolete_metrics
+        if ingestion_policy_id is not None:
+            self.ingestion_policy_id = ingestion_policy_id
         if last_error_message is not None:
             self.last_error_message = last_error_message
         if last_event_time is not None:
@@ -525,7 +530,7 @@ class Alert(object):
     def alert_chart_base(self):
         """Gets the alert_chart_base of this Alert.  # noqa: E501
 
-        The base of alert chart. A linear chart will have base as 1, while a logarithmic chart will have the other base value.  # noqa: E501
+        The base of alert chart. A linear chart will have base as 1. A logarithmic chart will have the other base value.The value should be an integer and should greater than or equal to 1.  # noqa: E501
 
         :return: The alert_chart_base of this Alert.  # noqa: E501
         :rtype: int
@@ -536,7 +541,7 @@ class Alert(object):
     def alert_chart_base(self, alert_chart_base):
         """Sets the alert_chart_base of this Alert.
 
-        The base of alert chart. A linear chart will have base as 1, while a logarithmic chart will have the other base value.  # noqa: E501
+        The base of alert chart. A linear chart will have base as 1. A logarithmic chart will have the other base value.The value should be an integer and should greater than or equal to 1.  # noqa: E501
 
         :param alert_chart_base: The alert_chart_base of this Alert.  # noqa: E501
         :type: int
@@ -1368,6 +1373,29 @@ class Alert(object):
         self._include_obsolete_metrics = include_obsolete_metrics
 
     @property
+    def ingestion_policy_id(self):
+        """Gets the ingestion_policy_id of this Alert.  # noqa: E501
+
+        Get the ingestion policy Id associated with ingestion policy alert.  # noqa: E501
+
+        :return: The ingestion_policy_id of this Alert.  # noqa: E501
+        :rtype: str
+        """
+        return self._ingestion_policy_id
+
+    @ingestion_policy_id.setter
+    def ingestion_policy_id(self, ingestion_policy_id):
+        """Sets the ingestion_policy_id of this Alert.
+
+        Get the ingestion policy Id associated with ingestion policy alert.  # noqa: E501
+
+        :param ingestion_policy_id: The ingestion_policy_id of this Alert.  # noqa: E501
+        :type: str
+        """
+
+        self._ingestion_policy_id = ingestion_policy_id
+
+    @property
     def last_error_message(self):
         """Gets the last_error_message of this Alert.  # noqa: E501
 
@@ -1762,7 +1790,7 @@ class Alert(object):
     def process_rate_minutes(self):
         """Gets the process_rate_minutes of this Alert.  # noqa: E501
 
-        The interval between checks for this alert, in minutes.  Defaults to 1 minute  # noqa: E501
+        The interval between checks for this alert, in minutes.  Defaults to 5 minutes  # noqa: E501
 
         :return: The process_rate_minutes of this Alert.  # noqa: E501
         :rtype: int
@@ -1773,7 +1801,7 @@ class Alert(object):
     def process_rate_minutes(self, process_rate_minutes):
         """Sets the process_rate_minutes of this Alert.
 
-        The interval between checks for this alert, in minutes.  Defaults to 1 minute  # noqa: E501
+        The interval between checks for this alert, in minutes.  Defaults to 5 minutes  # noqa: E501
 
         :param process_rate_minutes: The process_rate_minutes of this Alert.  # noqa: E501
         :type: int
@@ -2141,7 +2169,7 @@ class Alert(object):
     def target(self):
         """Gets the target of this Alert.  # noqa: E501
 
-        The email address or integration endpoint (such as PagerDuty or web hook) to notify when the alert status changes. Comma-separated list of targets. Multiple target types can be in the list. Alert target format: ({email}|pd:{pd_key}|target:{alert target ID})  # noqa: E501
+        The email address or integration endpoint (such as PagerDuty or web hook) to notify when the alert status changes. Comma-separated list of targets. Multiple target types can be in the list. Alert target format: ({email}|pd:{pd_key}|target:{alert target ID}). You cannot update this value.  # noqa: E501
 
         :return: The target of this Alert.  # noqa: E501
         :rtype: str
@@ -2152,7 +2180,7 @@ class Alert(object):
     def target(self, target):
         """Sets the target of this Alert.
 
-        The email address or integration endpoint (such as PagerDuty or web hook) to notify when the alert status changes. Comma-separated list of targets. Multiple target types can be in the list. Alert target format: ({email}|pd:{pd_key}|target:{alert target ID})  # noqa: E501
+        The email address or integration endpoint (such as PagerDuty or web hook) to notify when the alert status changes. Comma-separated list of targets. Multiple target types can be in the list. Alert target format: ({email}|pd:{pd_key}|target:{alert target ID}). You cannot update this value.  # noqa: E501
 
         :param target: The target of this Alert.  # noqa: E501
         :type: str

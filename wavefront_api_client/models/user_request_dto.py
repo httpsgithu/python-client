@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Wavefront REST API Documentation
+    Tanzu Observability REST API Documentation
 
-    <p>The Wavefront REST API enables you to interact with Wavefront servers using standard REST API tools. You can use the REST API to automate commonly executed operations such as automatically tagging sources.</p><p>When you make REST API calls outside the Wavefront REST API documentation you must add the header \"Authorization: Bearer &lt;&lt;API-TOKEN&gt;&gt;\" to your HTTP requests.</p>  # noqa: E501
+    <p>The REST API enables you to interact with the Tanzu Observability service by using standard REST API tools. You can use the REST API to automate commonly executed operations, for example to tag sources automatically.</p><p>When you make REST API calls outside the REST API documentation UI, to authenticate to the service, you must use an API token associated with a user account or a service account. For information on how to get the API token and examples, see <a href=\"http://docs.wavefront.com/using_wavefront_api.html\">Use the Tanzu Observability REST API.</a></p>  # noqa: E501
 
     OpenAPI spec version: v2
     Contact: chitimba@wavefront.com
@@ -37,8 +37,6 @@ class UserRequestDTO(object):
         'customer': 'str',
         'groups': 'list[str]',
         'identifier': 'str',
-        'ingestion_policies': 'list[str]',
-        'ingestion_policy_id': 'str',
         'roles': 'list[str]',
         'sso_id': 'str',
         'user_groups': 'list[str]'
@@ -49,14 +47,12 @@ class UserRequestDTO(object):
         'customer': 'customer',
         'groups': 'groups',
         'identifier': 'identifier',
-        'ingestion_policies': 'ingestionPolicies',
-        'ingestion_policy_id': 'ingestionPolicyId',
         'roles': 'roles',
         'sso_id': 'ssoId',
         'user_groups': 'userGroups'
     }
 
-    def __init__(self, credential=None, customer=None, groups=None, identifier=None, ingestion_policies=None, ingestion_policy_id=None, roles=None, sso_id=None, user_groups=None, _configuration=None):  # noqa: E501
+    def __init__(self, credential=None, customer=None, groups=None, identifier=None, roles=None, sso_id=None, user_groups=None, _configuration=None):  # noqa: E501
         """UserRequestDTO - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -66,8 +62,6 @@ class UserRequestDTO(object):
         self._customer = None
         self._groups = None
         self._identifier = None
-        self._ingestion_policies = None
-        self._ingestion_policy_id = None
         self._roles = None
         self._sso_id = None
         self._user_groups = None
@@ -81,10 +75,6 @@ class UserRequestDTO(object):
             self.groups = groups
         if identifier is not None:
             self.identifier = identifier
-        if ingestion_policies is not None:
-            self.ingestion_policies = ingestion_policies
-        if ingestion_policy_id is not None:
-            self.ingestion_policy_id = ingestion_policy_id
         if roles is not None:
             self.roles = roles
         if sso_id is not None:
@@ -175,48 +165,6 @@ class UserRequestDTO(object):
         """
 
         self._identifier = identifier
-
-    @property
-    def ingestion_policies(self):
-        """Gets the ingestion_policies of this UserRequestDTO.  # noqa: E501
-
-
-        :return: The ingestion_policies of this UserRequestDTO.  # noqa: E501
-        :rtype: list[str]
-        """
-        return self._ingestion_policies
-
-    @ingestion_policies.setter
-    def ingestion_policies(self, ingestion_policies):
-        """Sets the ingestion_policies of this UserRequestDTO.
-
-
-        :param ingestion_policies: The ingestion_policies of this UserRequestDTO.  # noqa: E501
-        :type: list[str]
-        """
-
-        self._ingestion_policies = ingestion_policies
-
-    @property
-    def ingestion_policy_id(self):
-        """Gets the ingestion_policy_id of this UserRequestDTO.  # noqa: E501
-
-
-        :return: The ingestion_policy_id of this UserRequestDTO.  # noqa: E501
-        :rtype: str
-        """
-        return self._ingestion_policy_id
-
-    @ingestion_policy_id.setter
-    def ingestion_policy_id(self, ingestion_policy_id):
-        """Sets the ingestion_policy_id of this UserRequestDTO.
-
-
-        :param ingestion_policy_id: The ingestion_policy_id of this UserRequestDTO.  # noqa: E501
-        :type: str
-        """
-
-        self._ingestion_policy_id = ingestion_policy_id
 
     @property
     def roles(self):

@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Wavefront REST API Documentation
+    Tanzu Observability REST API Documentation
 
-    <p>The Wavefront REST API enables you to interact with Wavefront servers using standard REST API tools. You can use the REST API to automate commonly executed operations such as automatically tagging sources.</p><p>When you make REST API calls outside the Wavefront REST API documentation you must add the header \"Authorization: Bearer &lt;&lt;API-TOKEN&gt;&gt;\" to your HTTP requests.</p>  # noqa: E501
+    <p>The REST API enables you to interact with the Tanzu Observability service by using standard REST API tools. You can use the REST API to automate commonly executed operations, for example to tag sources automatically.</p><p>When you make REST API calls outside the REST API documentation UI, to authenticate to the service, you must use an API token associated with a user account or a service account. For information on how to get the API token and examples, see <a href=\"http://docs.wavefront.com/using_wavefront_api.html\">Use the Tanzu Observability REST API.</a></p>  # noqa: E501
 
     OpenAPI spec version: v2
     Contact: chitimba@wavefront.com
@@ -33,105 +33,10 @@ class UserGroupApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def add_ingestion_policy(self, **kwargs):  # noqa: E501
-        """Add single ingestion policy to multiple groups  # noqa: E501
-
-          # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.add_ingestion_policy(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param IngestionPolicyMapping body: Example Body:  <pre>{   \"ingestionPolicyId\": \"Ingestion policy identifier\",   \"accounts\": [   \"account1\",   \"account2\",   \"account3\"   ],   \"groups\": [   \"group1\",   \"group2\"   ] }</pre>
-        :return: ResponseContainerUserGroupModel
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.add_ingestion_policy_with_http_info(**kwargs)  # noqa: E501
-        else:
-            (data) = self.add_ingestion_policy_with_http_info(**kwargs)  # noqa: E501
-            return data
-
-    def add_ingestion_policy_with_http_info(self, **kwargs):  # noqa: E501
-        """Add single ingestion policy to multiple groups  # noqa: E501
-
-          # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.add_ingestion_policy_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param IngestionPolicyMapping body: Example Body:  <pre>{   \"ingestionPolicyId\": \"Ingestion policy identifier\",   \"accounts\": [   \"account1\",   \"account2\",   \"account3\"   ],   \"groups\": [   \"group1\",   \"group2\"   ] }</pre>
-        :return: ResponseContainerUserGroupModel
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['body']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method add_ingestion_policy" % key
-                )
-            params[key] = val
-        del params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['api_key']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/api/v2/usergroup/addIngestionPolicy', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='ResponseContainerUserGroupModel',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
     def add_roles_to_user_group(self, id, **kwargs):  # noqa: E501
         """Add multiple roles to a specific user group  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.add_roles_to_user_group(id, async_req=True)
@@ -154,7 +59,7 @@ class UserGroupApi(object):
     def add_roles_to_user_group_with_http_info(self, id, **kwargs):  # noqa: E501
         """Add multiple roles to a specific user group  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.add_roles_to_user_group_with_http_info(id, async_req=True)
@@ -234,7 +139,7 @@ class UserGroupApi(object):
     def add_users_to_user_group(self, id, **kwargs):  # noqa: E501
         """Add multiple users to a specific user group  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.add_users_to_user_group(id, async_req=True)
@@ -257,7 +162,7 @@ class UserGroupApi(object):
     def add_users_to_user_group_with_http_info(self, id, **kwargs):  # noqa: E501
         """Add multiple users to a specific user group  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.add_users_to_user_group_with_http_info(id, async_req=True)
@@ -337,7 +242,7 @@ class UserGroupApi(object):
     def create_user_group(self, **kwargs):  # noqa: E501
         """Create a specific user group  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.create_user_group(async_req=True)
@@ -359,7 +264,7 @@ class UserGroupApi(object):
     def create_user_group_with_http_info(self, **kwargs):  # noqa: E501
         """Create a specific user group  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.create_user_group_with_http_info(async_req=True)
@@ -432,7 +337,7 @@ class UserGroupApi(object):
     def delete_user_group(self, id, **kwargs):  # noqa: E501
         """Delete a specific user group  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.delete_user_group(id, async_req=True)
@@ -454,7 +359,7 @@ class UserGroupApi(object):
     def delete_user_group_with_http_info(self, id, **kwargs):  # noqa: E501
         """Delete a specific user group  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.delete_user_group_with_http_info(id, async_req=True)
@@ -527,7 +432,7 @@ class UserGroupApi(object):
     def get_all_user_groups(self, **kwargs):  # noqa: E501
         """Get all user groups for a customer  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_all_user_groups(async_req=True)
@@ -550,7 +455,7 @@ class UserGroupApi(object):
     def get_all_user_groups_with_http_info(self, **kwargs):  # noqa: E501
         """Get all user groups for a customer  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_all_user_groups_with_http_info(async_req=True)
@@ -622,7 +527,7 @@ class UserGroupApi(object):
     def get_user_group(self, id, **kwargs):  # noqa: E501
         """Get a specific user group  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_user_group(id, async_req=True)
@@ -644,7 +549,7 @@ class UserGroupApi(object):
     def get_user_group_with_http_info(self, id, **kwargs):  # noqa: E501
         """Get a specific user group  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_user_group_with_http_info(id, async_req=True)
@@ -714,105 +619,10 @@ class UserGroupApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def remove_ingestion_policy(self, **kwargs):  # noqa: E501
-        """Removes single ingestion policy from multiple groups  # noqa: E501
-
-          # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.remove_ingestion_policy(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param IngestionPolicyMapping body: Example Body:  <pre>{   \"ingestionPolicyId\": \"Ingestion policy identifier\",   \"accounts\": [   \"account1\",   \"account2\",   \"account3\"   ],   \"groups\": [   \"group1\",   \"group2\"   ] }</pre>
-        :return: ResponseContainerUserGroupModel
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.remove_ingestion_policy_with_http_info(**kwargs)  # noqa: E501
-        else:
-            (data) = self.remove_ingestion_policy_with_http_info(**kwargs)  # noqa: E501
-            return data
-
-    def remove_ingestion_policy_with_http_info(self, **kwargs):  # noqa: E501
-        """Removes single ingestion policy from multiple groups  # noqa: E501
-
-          # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.remove_ingestion_policy_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param IngestionPolicyMapping body: Example Body:  <pre>{   \"ingestionPolicyId\": \"Ingestion policy identifier\",   \"accounts\": [   \"account1\",   \"account2\",   \"account3\"   ],   \"groups\": [   \"group1\",   \"group2\"   ] }</pre>
-        :return: ResponseContainerUserGroupModel
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['body']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method remove_ingestion_policy" % key
-                )
-            params[key] = val
-        del params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['api_key']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/api/v2/usergroup/removeIngestionPolicy', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='ResponseContainerUserGroupModel',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
     def remove_roles_from_user_group(self, id, **kwargs):  # noqa: E501
         """Remove multiple roles from a specific user group  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.remove_roles_from_user_group(id, async_req=True)
@@ -835,7 +645,7 @@ class UserGroupApi(object):
     def remove_roles_from_user_group_with_http_info(self, id, **kwargs):  # noqa: E501
         """Remove multiple roles from a specific user group  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.remove_roles_from_user_group_with_http_info(id, async_req=True)
@@ -915,7 +725,7 @@ class UserGroupApi(object):
     def remove_users_from_user_group(self, id, **kwargs):  # noqa: E501
         """Remove multiple users from a specific user group  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.remove_users_from_user_group(id, async_req=True)
@@ -938,7 +748,7 @@ class UserGroupApi(object):
     def remove_users_from_user_group_with_http_info(self, id, **kwargs):  # noqa: E501
         """Remove multiple users from a specific user group  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.remove_users_from_user_group_with_http_info(id, async_req=True)
@@ -1018,7 +828,7 @@ class UserGroupApi(object):
     def update_user_group(self, id, **kwargs):  # noqa: E501
         """Update a specific user group  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.update_user_group(id, async_req=True)
@@ -1041,7 +851,7 @@ class UserGroupApi(object):
     def update_user_group_with_http_info(self, id, **kwargs):  # noqa: E501
         """Update a specific user group  # noqa: E501
 
-          # noqa: E501
+        <b>Note</b>: Applies only to original Tanzu Observability instances that are not onboarded to VMware Cloud services.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.update_user_group_with_http_info(id, async_req=True)

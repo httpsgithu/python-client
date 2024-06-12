@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Wavefront REST API Documentation
+    Tanzu Observability REST API Documentation
 
-    <p>The Wavefront REST API enables you to interact with Wavefront servers using standard REST API tools. You can use the REST API to automate commonly executed operations such as automatically tagging sources.</p><p>When you make REST API calls outside the Wavefront REST API documentation you must add the header \"Authorization: Bearer &lt;&lt;API-TOKEN&gt;&gt;\" to your HTTP requests.</p>  # noqa: E501
+    <p>The REST API enables you to interact with the Tanzu Observability service by using standard REST API tools. You can use the REST API to automate commonly executed operations, for example to tag sources automatically.</p><p>When you make REST API calls outside the REST API documentation UI, to authenticate to the service, you must use an API token associated with a user account or a service account. For information on how to get the API token and examples, see <a href=\"http://docs.wavefront.com/using_wavefront_api.html\">Use the Tanzu Observability REST API.</a></p>  # noqa: E501
 
     OpenAPI spec version: v2
     Contact: chitimba@wavefront.com
@@ -33,204 +33,6 @@ class UsageApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def add_accounts(self, id, **kwargs):  # noqa: E501
-        """Add accounts to ingestion policy  # noqa: E501
-
-          # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.add_accounts(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str id: (required)
-        :param list[str] body: List of accounts to be added to ingestion policy
-        :return: ResponseContainerIngestionPolicy
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.add_accounts_with_http_info(id, **kwargs)  # noqa: E501
-        else:
-            (data) = self.add_accounts_with_http_info(id, **kwargs)  # noqa: E501
-            return data
-
-    def add_accounts_with_http_info(self, id, **kwargs):  # noqa: E501
-        """Add accounts to ingestion policy  # noqa: E501
-
-          # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.add_accounts_with_http_info(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str id: (required)
-        :param list[str] body: List of accounts to be added to ingestion policy
-        :return: ResponseContainerIngestionPolicy
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['id', 'body']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method add_accounts" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in params or
-                                                       params['id'] is None):  # noqa: E501
-            raise ValueError("Missing the required parameter `id` when calling `add_accounts`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in params:
-            path_params['id'] = params['id']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['api_key']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/api/v2/usage/ingestionpolicy/{id}/addAccounts', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='ResponseContainerIngestionPolicy',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def add_groups(self, id, **kwargs):  # noqa: E501
-        """Add groups to the ingestion policy  # noqa: E501
-
-          # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.add_groups(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str id: (required)
-        :param list[str] body: List of groups to be added to the ingestion policy
-        :return: ResponseContainerIngestionPolicy
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.add_groups_with_http_info(id, **kwargs)  # noqa: E501
-        else:
-            (data) = self.add_groups_with_http_info(id, **kwargs)  # noqa: E501
-            return data
-
-    def add_groups_with_http_info(self, id, **kwargs):  # noqa: E501
-        """Add groups to the ingestion policy  # noqa: E501
-
-          # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.add_groups_with_http_info(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str id: (required)
-        :param list[str] body: List of groups to be added to the ingestion policy
-        :return: ResponseContainerIngestionPolicy
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['id', 'body']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method add_groups" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in params or
-                                                       params['id'] is None):  # noqa: E501
-            raise ValueError("Missing the required parameter `id` when calling `add_groups`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in params:
-            path_params['id'] = params['id']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['api_key']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/api/v2/usage/ingestionpolicy/{id}/addGroups', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='ResponseContainerIngestionPolicy',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
     def create_ingestion_policy(self, **kwargs):  # noqa: E501
         """Create a specific ingestion policy  # noqa: E501
 
@@ -241,8 +43,8 @@ class UsageApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param IngestionPolicy body: Example Body:  <pre>{   \"name\": \"Ingestion policy name\",   \"description\": \"Ingestion policy description\"   \"scope\": \"GROUP\",   \"isLimited\": \"true\",   \"limitPPS\": \"1000\" }</pre>
-        :return: ResponseContainerIngestionPolicy
+        :param IngestionPolicyWriteModel body: Example Body:  <pre>{   \"name\": \"Ingestion policy name\",   \"description\": \"Ingestion policy description\",   \"scope\": \"GROUP\",   \"groups\": [\"g1\",\"g2\"],   \"isLimited\": \"true\",   \"limitPPS\": \"1000\",   \"alert\": {        \"name\": \"Alert Name\",        \"targets\": {            \"severe\": \"user1@mail.com\"         },        \"conditionPercentages\": {            \"info\": 70,            \"warn\": 90         },        \"minutes\": 5,        \"resolveAfterMinutes\": 2,        \"evaluateRealtimeData\": false,        \"additionalInformation\": \"Additional Info\",        \"tags\": {           \"customerTags\": [             \"alertTag1\"           ]         },        \"conditionsThresholdOperator\": \">\"     } }</pre>
+        :return: ResponseContainerIngestionPolicyReadModel
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -263,8 +65,8 @@ class UsageApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param IngestionPolicy body: Example Body:  <pre>{   \"name\": \"Ingestion policy name\",   \"description\": \"Ingestion policy description\"   \"scope\": \"GROUP\",   \"isLimited\": \"true\",   \"limitPPS\": \"1000\" }</pre>
-        :return: ResponseContainerIngestionPolicy
+        :param IngestionPolicyWriteModel body: Example Body:  <pre>{   \"name\": \"Ingestion policy name\",   \"description\": \"Ingestion policy description\",   \"scope\": \"GROUP\",   \"groups\": [\"g1\",\"g2\"],   \"isLimited\": \"true\",   \"limitPPS\": \"1000\",   \"alert\": {        \"name\": \"Alert Name\",        \"targets\": {            \"severe\": \"user1@mail.com\"         },        \"conditionPercentages\": {            \"info\": 70,            \"warn\": 90         },        \"minutes\": 5,        \"resolveAfterMinutes\": 2,        \"evaluateRealtimeData\": false,        \"additionalInformation\": \"Additional Info\",        \"tags\": {           \"customerTags\": [             \"alertTag1\"           ]         },        \"conditionsThresholdOperator\": \">\"     } }</pre>
+        :return: ResponseContainerIngestionPolicyReadModel
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -318,7 +120,7 @@ class UsageApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='ResponseContainerIngestionPolicy',  # noqa: E501
+            response_type='ResponseContainerIngestionPolicyReadModel',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -337,7 +139,7 @@ class UsageApi(object):
 
         :param async_req bool
         :param str id: (required)
-        :return: ResponseContainerIngestionPolicy
+        :return: ResponseContainerIngestionPolicyReadModel
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -359,7 +161,7 @@ class UsageApi(object):
 
         :param async_req bool
         :param str id: (required)
-        :return: ResponseContainerIngestionPolicy
+        :return: ResponseContainerIngestionPolicyReadModel
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -402,6 +204,10 @@ class UsageApi(object):
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
 
@@ -413,7 +219,7 @@ class UsageApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='ResponseContainerIngestionPolicy',  # noqa: E501
+            response_type='ResponseContainerIngestionPolicyReadModel',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -501,6 +307,10 @@ class UsageApi(object):
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/csv'])  # noqa: E501
 
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
 
@@ -532,7 +342,7 @@ class UsageApi(object):
         :param async_req bool
         :param int offset:
         :param int limit:
-        :return: ResponseContainerPagedIngestionPolicy
+        :return: ResponseContainerPagedIngestionPolicyReadModel
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -555,7 +365,7 @@ class UsageApi(object):
         :param async_req bool
         :param int offset:
         :param int limit:
-        :return: ResponseContainerPagedIngestionPolicy
+        :return: ResponseContainerPagedIngestionPolicyReadModel
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -596,6 +406,10 @@ class UsageApi(object):
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
 
@@ -607,7 +421,7 @@ class UsageApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='ResponseContainerPagedIngestionPolicy',  # noqa: E501
+            response_type='ResponseContainerPagedIngestionPolicyReadModel',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -626,7 +440,7 @@ class UsageApi(object):
 
         :param async_req bool
         :param str id: (required)
-        :return: ResponseContainerIngestionPolicy
+        :return: ResponseContainerIngestionPolicyReadModel
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -648,7 +462,7 @@ class UsageApi(object):
 
         :param async_req bool
         :param str id: (required)
-        :return: ResponseContainerIngestionPolicy
+        :return: ResponseContainerIngestionPolicyReadModel
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -691,6 +505,10 @@ class UsageApi(object):
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
 
@@ -702,7 +520,7 @@ class UsageApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='ResponseContainerIngestionPolicy',  # noqa: E501
+            response_type='ResponseContainerIngestionPolicyReadModel',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -710,47 +528,47 @@ class UsageApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def remove_accounts(self, id, **kwargs):  # noqa: E501
-        """Remove accounts from ingestion policy  # noqa: E501
+    def get_ingestion_policy_by_version(self, id, version, **kwargs):  # noqa: E501
+        """Get a specific historical version of a ingestion policy  # noqa: E501
 
           # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.remove_accounts(id, async_req=True)
+        >>> thread = api.get_ingestion_policy_by_version(id, version, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str id: (required)
-        :param list[str] body: List of accounts to be added to ingestion policy
-        :return: ResponseContainerIngestionPolicy
+        :param int version: (required)
+        :return: ResponseContainerIngestionPolicyReadModel
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.remove_accounts_with_http_info(id, **kwargs)  # noqa: E501
+            return self.get_ingestion_policy_by_version_with_http_info(id, version, **kwargs)  # noqa: E501
         else:
-            (data) = self.remove_accounts_with_http_info(id, **kwargs)  # noqa: E501
+            (data) = self.get_ingestion_policy_by_version_with_http_info(id, version, **kwargs)  # noqa: E501
             return data
 
-    def remove_accounts_with_http_info(self, id, **kwargs):  # noqa: E501
-        """Remove accounts from ingestion policy  # noqa: E501
+    def get_ingestion_policy_by_version_with_http_info(self, id, version, **kwargs):  # noqa: E501
+        """Get a specific historical version of a ingestion policy  # noqa: E501
 
           # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.remove_accounts_with_http_info(id, async_req=True)
+        >>> thread = api.get_ingestion_policy_by_version_with_http_info(id, version, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str id: (required)
-        :param list[str] body: List of accounts to be added to ingestion policy
-        :return: ResponseContainerIngestionPolicy
+        :param int version: (required)
+        :return: ResponseContainerIngestionPolicyReadModel
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'body']  # noqa: E501
+        all_params = ['id', 'version']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -761,20 +579,26 @@ class UsageApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method remove_accounts" % key
+                    " to method get_ingestion_policy_by_version" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'id' is set
         if self.api_client.client_side_validation and ('id' not in params or
                                                        params['id'] is None):  # noqa: E501
-            raise ValueError("Missing the required parameter `id` when calling `remove_accounts`")  # noqa: E501
+            raise ValueError("Missing the required parameter `id` when calling `get_ingestion_policy_by_version`")  # noqa: E501
+        # verify the required parameter 'version' is set
+        if self.api_client.client_side_validation and ('version' not in params or
+                                                       params['version'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `version` when calling `get_ingestion_policy_by_version`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
         if 'id' in params:
             path_params['id'] = params['id']  # noqa: E501
+        if 'version' in params:
+            path_params['version'] = params['version']  # noqa: E501
 
         query_params = []
 
@@ -784,24 +608,26 @@ class UsageApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'body' in params:
-            body_params = params['body']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
             ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/v2/usage/ingestionpolicy/{id}/removeAccounts', 'POST',
+            '/api/v2/usage/ingestionpolicy/{id}/history/{version}', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='ResponseContainerIngestionPolicy',  # noqa: E501
+            response_type='ResponseContainerIngestionPolicyReadModel',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -809,47 +635,49 @@ class UsageApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def remove_groups(self, id, **kwargs):  # noqa: E501
-        """Remove groups from the ingestion policy  # noqa: E501
+    def get_ingestion_policy_history(self, id, **kwargs):  # noqa: E501
+        """Get the version history of ingestion policy  # noqa: E501
 
           # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.remove_groups(id, async_req=True)
+        >>> thread = api.get_ingestion_policy_history(id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str id: (required)
-        :param list[str] body: List of groups to be removed from the ingestion policy
-        :return: ResponseContainerIngestionPolicy
+        :param int offset:
+        :param int limit:
+        :return: ResponseContainerHistoryResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.remove_groups_with_http_info(id, **kwargs)  # noqa: E501
+            return self.get_ingestion_policy_history_with_http_info(id, **kwargs)  # noqa: E501
         else:
-            (data) = self.remove_groups_with_http_info(id, **kwargs)  # noqa: E501
+            (data) = self.get_ingestion_policy_history_with_http_info(id, **kwargs)  # noqa: E501
             return data
 
-    def remove_groups_with_http_info(self, id, **kwargs):  # noqa: E501
-        """Remove groups from the ingestion policy  # noqa: E501
+    def get_ingestion_policy_history_with_http_info(self, id, **kwargs):  # noqa: E501
+        """Get the version history of ingestion policy  # noqa: E501
 
           # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.remove_groups_with_http_info(id, async_req=True)
+        >>> thread = api.get_ingestion_policy_history_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str id: (required)
-        :param list[str] body: List of groups to be removed from the ingestion policy
-        :return: ResponseContainerIngestionPolicy
+        :param int offset:
+        :param int limit:
+        :return: ResponseContainerHistoryResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'body']  # noqa: E501
+        all_params = ['id', 'offset', 'limit']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -860,20 +688,131 @@ class UsageApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method remove_groups" % key
+                    " to method get_ingestion_policy_history" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'id' is set
         if self.api_client.client_side_validation and ('id' not in params or
                                                        params['id'] is None):  # noqa: E501
-            raise ValueError("Missing the required parameter `id` when calling `remove_groups`")  # noqa: E501
+            raise ValueError("Missing the required parameter `id` when calling `get_ingestion_policy_history`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
         if 'id' in params:
             path_params['id'] = params['id']  # noqa: E501
+
+        query_params = []
+        if 'offset' in params:
+            query_params.append(('offset', params['offset']))  # noqa: E501
+        if 'limit' in params:
+            query_params.append(('limit', params['limit']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/api/v2/usage/ingestionpolicy/{id}/history', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ResponseContainerHistoryResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def revert_ingestion_policy_by_version(self, id, version, **kwargs):  # noqa: E501
+        """Revert to a specific historical version of a ingestion policy  # noqa: E501
+
+          # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.revert_ingestion_policy_by_version(id, version, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str id: (required)
+        :param int version: (required)
+        :return: ResponseContainerIngestionPolicyReadModel
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.revert_ingestion_policy_by_version_with_http_info(id, version, **kwargs)  # noqa: E501
+        else:
+            (data) = self.revert_ingestion_policy_by_version_with_http_info(id, version, **kwargs)  # noqa: E501
+            return data
+
+    def revert_ingestion_policy_by_version_with_http_info(self, id, version, **kwargs):  # noqa: E501
+        """Revert to a specific historical version of a ingestion policy  # noqa: E501
+
+          # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.revert_ingestion_policy_by_version_with_http_info(id, version, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str id: (required)
+        :param int version: (required)
+        :return: ResponseContainerIngestionPolicyReadModel
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['id', 'version']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method revert_ingestion_policy_by_version" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'id' is set
+        if self.api_client.client_side_validation and ('id' not in params or
+                                                       params['id'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `id` when calling `revert_ingestion_policy_by_version`")  # noqa: E501
+        # verify the required parameter 'version' is set
+        if self.api_client.client_side_validation and ('version' not in params or
+                                                       params['version'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `version` when calling `revert_ingestion_policy_by_version`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'id' in params:
+            path_params['id'] = params['id']  # noqa: E501
+        if 'version' in params:
+            path_params['version'] = params['version']  # noqa: E501
 
         query_params = []
 
@@ -883,24 +822,26 @@ class UsageApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'body' in params:
-            body_params = params['body']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
             ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/v2/usage/ingestionpolicy/{id}/removeGroups', 'POST',
+            '/api/v2/usage/ingestionpolicy/{id}/revert/{version}', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='ResponseContainerIngestionPolicy',  # noqa: E501
+            response_type='ResponseContainerIngestionPolicyReadModel',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -919,8 +860,8 @@ class UsageApi(object):
 
         :param async_req bool
         :param str id: (required)
-        :param IngestionPolicy body: Example Body:  <pre>{   \"name\": \"Ingestion policy name\",   \"description\": \"Ingestion policy description\"   \"scope\": \"GROUP\",   \"isLimited\": \"true\",   \"limitPPS\": \"1000\" }</pre>
-        :return: ResponseContainerIngestionPolicy
+        :param IngestionPolicyWriteModel body: Example Body:  <pre>{   \"name\": \"Ingestion policy name\",   \"description\": \"Ingestion policy description\",   \"scope\": \"GROUP\",   \"groups\": [\"g1\",\"g2\"],   \"isLimited\": \"true\",   \"limitPPS\": \"1000\",   \"alert\": {        \"name\": \"Alert Name\",        \"targets\": {            \"severe\": \"user1@mail.com\"         },        \"conditionPercentages\": {            \"info\": 70,            \"warn\": 90         },        \"minutes\": 5,        \"resolveAfterMinutes\": 2,        \"evaluateRealtimeData\": false,        \"additionalInformation\": \"Additional Info\",        \"tags\": {           \"customerTags\": [             \"alertTag1\"           ]         },        \"conditionsThresholdOperator\": \">\"     } }</pre>
+        :return: ResponseContainerIngestionPolicyReadModel
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -942,8 +883,8 @@ class UsageApi(object):
 
         :param async_req bool
         :param str id: (required)
-        :param IngestionPolicy body: Example Body:  <pre>{   \"name\": \"Ingestion policy name\",   \"description\": \"Ingestion policy description\"   \"scope\": \"GROUP\",   \"isLimited\": \"true\",   \"limitPPS\": \"1000\" }</pre>
-        :return: ResponseContainerIngestionPolicy
+        :param IngestionPolicyWriteModel body: Example Body:  <pre>{   \"name\": \"Ingestion policy name\",   \"description\": \"Ingestion policy description\",   \"scope\": \"GROUP\",   \"groups\": [\"g1\",\"g2\"],   \"isLimited\": \"true\",   \"limitPPS\": \"1000\",   \"alert\": {        \"name\": \"Alert Name\",        \"targets\": {            \"severe\": \"user1@mail.com\"         },        \"conditionPercentages\": {            \"info\": 70,            \"warn\": 90         },        \"minutes\": 5,        \"resolveAfterMinutes\": 2,        \"evaluateRealtimeData\": false,        \"additionalInformation\": \"Additional Info\",        \"tags\": {           \"customerTags\": [             \"alertTag1\"           ]         },        \"conditionsThresholdOperator\": \">\"     } }</pre>
+        :return: ResponseContainerIngestionPolicyReadModel
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1003,7 +944,7 @@ class UsageApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='ResponseContainerIngestionPolicy',  # noqa: E501
+            response_type='ResponseContainerIngestionPolicyReadModel',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

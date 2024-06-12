@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Wavefront REST API Documentation
+    Tanzu Observability REST API Documentation
 
-    <p>The Wavefront REST API enables you to interact with Wavefront servers using standard REST API tools. You can use the REST API to automate commonly executed operations such as automatically tagging sources.</p><p>When you make REST API calls outside the Wavefront REST API documentation you must add the header \"Authorization: Bearer &lt;&lt;API-TOKEN&gt;&gt;\" to your HTTP requests.</p>  # noqa: E501
+    <p>The REST API enables you to interact with the Tanzu Observability service by using standard REST API tools. You can use the REST API to automate commonly executed operations, for example to tag sources automatically.</p><p>When you make REST API calls outside the REST API documentation UI, to authenticate to the service, you must use an API token associated with a user account or a service account. For information on how to get the API token and examples, see <a href=\"http://docs.wavefront.com/using_wavefront_api.html\">Use the Tanzu Observability REST API.</a></p>  # noqa: E501
 
     OpenAPI spec version: v2
     Contact: chitimba@wavefront.com
@@ -39,6 +39,8 @@ class CloudWatchConfiguration(object):
         'metric_filter_regex': 'str',
         'namespaces': 'list[str]',
         'point_tag_filter_regex': 'str',
+        's3_bucket_name_filter_regex': 'str',
+        'thread_distribution_in_mins': 'int',
         'volume_selection_tags': 'dict(str, str)',
         'volume_selection_tags_expr': 'str'
     }
@@ -50,11 +52,13 @@ class CloudWatchConfiguration(object):
         'metric_filter_regex': 'metricFilterRegex',
         'namespaces': 'namespaces',
         'point_tag_filter_regex': 'pointTagFilterRegex',
+        's3_bucket_name_filter_regex': 's3BucketNameFilterRegex',
+        'thread_distribution_in_mins': 'threadDistributionInMins',
         'volume_selection_tags': 'volumeSelectionTags',
         'volume_selection_tags_expr': 'volumeSelectionTagsExpr'
     }
 
-    def __init__(self, base_credentials=None, instance_selection_tags=None, instance_selection_tags_expr=None, metric_filter_regex=None, namespaces=None, point_tag_filter_regex=None, volume_selection_tags=None, volume_selection_tags_expr=None, _configuration=None):  # noqa: E501
+    def __init__(self, base_credentials=None, instance_selection_tags=None, instance_selection_tags_expr=None, metric_filter_regex=None, namespaces=None, point_tag_filter_regex=None, s3_bucket_name_filter_regex=None, thread_distribution_in_mins=None, volume_selection_tags=None, volume_selection_tags_expr=None, _configuration=None):  # noqa: E501
         """CloudWatchConfiguration - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -66,6 +70,8 @@ class CloudWatchConfiguration(object):
         self._metric_filter_regex = None
         self._namespaces = None
         self._point_tag_filter_regex = None
+        self._s3_bucket_name_filter_regex = None
+        self._thread_distribution_in_mins = None
         self._volume_selection_tags = None
         self._volume_selection_tags_expr = None
         self.discriminator = None
@@ -82,6 +88,10 @@ class CloudWatchConfiguration(object):
             self.namespaces = namespaces
         if point_tag_filter_regex is not None:
             self.point_tag_filter_regex = point_tag_filter_regex
+        if s3_bucket_name_filter_regex is not None:
+            self.s3_bucket_name_filter_regex = s3_bucket_name_filter_regex
+        if thread_distribution_in_mins is not None:
+            self.thread_distribution_in_mins = thread_distribution_in_mins
         if volume_selection_tags is not None:
             self.volume_selection_tags = volume_selection_tags
         if volume_selection_tags_expr is not None:
@@ -222,6 +232,52 @@ class CloudWatchConfiguration(object):
         """
 
         self._point_tag_filter_regex = point_tag_filter_regex
+
+    @property
+    def s3_bucket_name_filter_regex(self):
+        """Gets the s3_bucket_name_filter_regex of this CloudWatchConfiguration.  # noqa: E501
+
+        A regular expression that a AWS S3 Bucket name must match (case-insensitively) in order to be ingested  # noqa: E501
+
+        :return: The s3_bucket_name_filter_regex of this CloudWatchConfiguration.  # noqa: E501
+        :rtype: str
+        """
+        return self._s3_bucket_name_filter_regex
+
+    @s3_bucket_name_filter_regex.setter
+    def s3_bucket_name_filter_regex(self, s3_bucket_name_filter_regex):
+        """Sets the s3_bucket_name_filter_regex of this CloudWatchConfiguration.
+
+        A regular expression that a AWS S3 Bucket name must match (case-insensitively) in order to be ingested  # noqa: E501
+
+        :param s3_bucket_name_filter_regex: The s3_bucket_name_filter_regex of this CloudWatchConfiguration.  # noqa: E501
+        :type: str
+        """
+
+        self._s3_bucket_name_filter_regex = s3_bucket_name_filter_regex
+
+    @property
+    def thread_distribution_in_mins(self):
+        """Gets the thread_distribution_in_mins of this CloudWatchConfiguration.  # noqa: E501
+
+        ThreadDistributionInMins  # noqa: E501
+
+        :return: The thread_distribution_in_mins of this CloudWatchConfiguration.  # noqa: E501
+        :rtype: int
+        """
+        return self._thread_distribution_in_mins
+
+    @thread_distribution_in_mins.setter
+    def thread_distribution_in_mins(self, thread_distribution_in_mins):
+        """Sets the thread_distribution_in_mins of this CloudWatchConfiguration.
+
+        ThreadDistributionInMins  # noqa: E501
+
+        :param thread_distribution_in_mins: The thread_distribution_in_mins of this CloudWatchConfiguration.  # noqa: E501
+        :type: int
+        """
+
+        self._thread_distribution_in_mins = thread_distribution_in_mins
 
     @property
     def volume_selection_tags(self):

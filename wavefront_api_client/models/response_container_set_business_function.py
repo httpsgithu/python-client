@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Wavefront REST API Documentation
+    Tanzu Observability REST API Documentation
 
-    <p>The Wavefront REST API enables you to interact with Wavefront servers using standard REST API tools. You can use the REST API to automate commonly executed operations such as automatically tagging sources.</p><p>When you make REST API calls outside the Wavefront REST API documentation you must add the header \"Authorization: Bearer &lt;&lt;API-TOKEN&gt;&gt;\" to your HTTP requests.</p>  # noqa: E501
+    <p>The REST API enables you to interact with the Tanzu Observability service by using standard REST API tools. You can use the REST API to automate commonly executed operations, for example to tag sources automatically.</p><p>When you make REST API calls outside the REST API documentation UI, to authenticate to the service, you must use an API token associated with a user account or a service account. For information on how to get the API token and examples, see <a href=\"http://docs.wavefront.com/using_wavefront_api.html\">Use the Tanzu Observability REST API.</a></p>  # noqa: E501
 
     OpenAPI spec version: v2
     Contact: chitimba@wavefront.com
@@ -33,28 +33,54 @@ class ResponseContainerSetBusinessFunction(object):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'debug_info': 'list[str]',
         'response': 'list[str]',
         'status': 'ResponseStatus'
     }
 
     attribute_map = {
+        'debug_info': 'debugInfo',
         'response': 'response',
         'status': 'status'
     }
 
-    def __init__(self, response=None, status=None, _configuration=None):  # noqa: E501
+    def __init__(self, debug_info=None, response=None, status=None, _configuration=None):  # noqa: E501
         """ResponseContainerSetBusinessFunction - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
         self._configuration = _configuration
 
+        self._debug_info = None
         self._response = None
         self._status = None
         self.discriminator = None
 
+        if debug_info is not None:
+            self.debug_info = debug_info
         if response is not None:
             self.response = response
         self.status = status
+
+    @property
+    def debug_info(self):
+        """Gets the debug_info of this ResponseContainerSetBusinessFunction.  # noqa: E501
+
+
+        :return: The debug_info of this ResponseContainerSetBusinessFunction.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._debug_info
+
+    @debug_info.setter
+    def debug_info(self, debug_info):
+        """Sets the debug_info of this ResponseContainerSetBusinessFunction.
+
+
+        :param debug_info: The debug_info of this ResponseContainerSetBusinessFunction.  # noqa: E501
+        :type: list[str]
+        """
+
+        self._debug_info = debug_info
 
     @property
     def response(self):
@@ -74,7 +100,7 @@ class ResponseContainerSetBusinessFunction(object):
         :param response: The response of this ResponseContainerSetBusinessFunction.  # noqa: E501
         :type: list[str]
         """
-        allowed_values = ["VIEW_MONITORED_APPLICATION_SERVICE", "VIEW_MONITORED_CLUSTER", "VIEW_MONITORED_CLUSTER_TAGS", "VIEW_DASHBOARDS", "VIEW_DASHBOARDS_TAGS", "VIEW_METRIC_TIMESERIES", "VIEW_HOSTS", "VIEW_HOST_TAGS", "VIEW_AGENT_TAGS", "VIEW_EVENTS", "VIEW_EVENT_TAGS", "VIEW_ALERTS", "VIEW_ALERT_TAGS", "VIEW_REGISTERED_QUERIES", "VIEW_REGISTERED_QUERY_TAGS", "VIEW_MAINTENANCE_WINDOWS", "VIEW_NOTIFICANTS", "VIEW_CUSTOM_METRICS", "VIEW_TARGETS", "VIEW_AGENTS", "VIEW_SSH_CONFIGS", "VIEW_EXTERNAL_SERVICES", "VIEW_EXTERNAL_SERVICES_TAGS", "VIEW_EXTERNAL_LINKS", "VIEW_EXTERNAL_LINK_DIGESTS", "VIEW_EXTERNAL_LINK_TAGS", "VIEW_LOGS", "VIEW_SLOW_QUERY_PAGE", "VIEW_SAVED_SEARCHES", "VIEW_MY_MESSAGES", "VIEW_APPLICATIONS", "VIEW_ANOMALY", "SPY_ON_POINTS", "SPY_ON_ID_CREATIONS", "SPY_UNUSED_METRICS", "VIEW_SAML_SSO_SETTINGS", "MODIFY_MONITORED_APPLICATION_SERVICE", "MODIFY_MONITORED_CLUSTER", "MODIFY_MONITORED_CLUSTER_TAGS", "MODIFY_PRIVATE_TAGS", "MODIFY_CUSTOM_METRICS", "MODIFY_DASHBOARDS", "MODIFY_EVENTS", "MODIFY_EVENT_TAGS", "MODIFY_AGENTS", "MODIFY_AGENT_TAGS", "MODIFY_HOSTS", "MODIFY_HOST_TAGS", "MODIFY_MACHINES", "MODIFY_SSH_CONFIGS", "MODIFY_ALERTS", "MODIFY_ALERT_TAGS", "MODIFY_REGISTERED_QUERIES", "MODIFY_REGISTERED_QUERY_TAGS", "MODIFY_MAINTENANCE_WINDOWS", "MODIFY_NOTIFICANTS", "MODIFY_DASHBOARD_TAGS", "MODIFY_TARGETS", "MODIFY_EXTERNAL_SERVICES", "MODIFY_EXTERNAL_SERVICES_TAGS", "CREATE_EMBEDDED_CHARTS", "MODIFY_METRIC_VISIBILITY", "MODIFY_EXTERNAL_LINKS", "MODIFY_EXTERNAL_LINK_TAGS", "MODIFY_SAVED_SEARCHES", "MODIFY_OWN_ONBOARDING_STATE", "MODIFY_APPLICATIONS", "INGESTION_POLICY_MANAGEMENT", "METRICS_POLICY_MANAGEMENT", "MODIFY_SAML_SSO_SETTINGS", "METRIC_INGESTION", "METRIC_INGESTION_LISTENER", "LOGIN", "LOGOUT", "CHANGE_PASSWORD", "SEND_FORGOTTEN_PASSWORD_EMAILS", "CHANGE_USER_PREFERENCE", "CREATE_TOKEN", "REVOKE_ALL_SESSIONS", "REVOKE_ALL_TOKENS", "REVOKE_TOKEN", "GET_TOKENS", "GET_ALL_ACCOUNTS", "GET_ALL_USERS", "GET_ALL_SERVICE_ACCOUNTS", "ADMINISTER_GROUPS", "DELETE_ACCOUNT", "INVITE_USER", "ADMINISTER_SERVICE_ACCOUNTS", "NO_REAUTH_INVITE_USER", "ADMINISTER_USER_GROUPS", "ADMINISTER_CUSTOMER_PREFERENCES", "ROLES_MANAGEMENT", "VIEW_CUSTOMERS", "MODIFY_CUSTOMER", "DELETE_CUSTOMER", "GET_TOKEN_STATUS", "SEND_UI_METRICS", "TOKEN"]  # noqa: E501
+        allowed_values = ["VIEW_MONITORED_APPLICATION_SERVICE", "VIEW_MONITORED_CLUSTER", "VIEW_MONITORED_CLUSTER_TAGS", "VIEW_DASHBOARDS", "VIEW_DASHBOARDS_TAGS", "VIEW_METRIC_TIMESERIES", "VIEW_EPHEMERAL_METRIC_TIMESERIES", "VIEW_HOSTS", "VIEW_HOST_TAGS", "VIEW_AGENT_TAGS", "VIEW_EVENTS", "VIEW_EVENT_TAGS", "VIEW_ALERTS", "VIEW_ALERT_TAGS", "VIEW_REGISTERED_QUERIES", "VIEW_REGISTERED_QUERY_TAGS", "VIEW_MAINTENANCE_WINDOWS", "VIEW_NOTIFICANTS", "VIEW_CUSTOM_METRICS", "VIEW_TARGETS", "VIEW_AGENTS", "VIEW_SSH_CONFIGS", "VIEW_EXTERNAL_SERVICES", "VIEW_EXTERNAL_SERVICES_TAGS", "VIEW_EXTERNAL_LINKS", "VIEW_EXTERNAL_LINK_DIGESTS", "VIEW_EXTERNAL_LINK_TAGS", "VIEW_LOGS", "VIEW_SLOW_QUERY_PAGE", "VIEW_SAVED_SEARCHES", "VIEW_MY_MESSAGES", "VIEW_APPLICATIONS", "VIEW_ANOMALY", "SPY_ON_POINTS", "SPY_ON_ID_CREATIONS", "SPY_UNUSED_METRICS", "VIEW_SAML_SSO_SETTINGS", "VIEW_INGESTION_POLICY", "VIEW_CLUSTER_INFO", "VIEW_QUERY_FEDERATION", "MODIFY_MONITORED_APPLICATION_SERVICE", "MODIFY_MONITORED_CLUSTER", "MODIFY_MONITORED_CLUSTER_TAGS", "MODIFY_PRIVATE_TAGS", "MODIFY_CUSTOM_METRICS", "MODIFY_DASHBOARDS", "MODIFY_EVENTS", "MODIFY_EVENT_TAGS", "MODIFY_AGENTS", "MODIFY_AGENT_TAGS", "MODIFY_HOSTS", "MODIFY_HOST_TAGS", "MODIFY_MACHINES", "MODIFY_SSH_CONFIGS", "MODIFY_ALERTS", "MODIFY_ALERT_TAGS", "MODIFY_REGISTERED_QUERIES", "MODIFY_REGISTERED_QUERY_TAGS", "MODIFY_MAINTENANCE_WINDOWS", "MODIFY_NOTIFICANTS", "MODIFY_DASHBOARD_TAGS", "MODIFY_TARGETS", "MODIFY_EXTERNAL_SERVICES", "MODIFY_EXTERNAL_SERVICES_TAGS", "CREATE_EMBEDDED_CHARTS", "MODIFY_METRIC_VISIBILITY", "MODIFY_METRIC_TYPE", "MODIFY_EXTERNAL_LINKS", "MODIFY_EXTERNAL_LINK_TAGS", "MODIFY_SAVED_SEARCHES", "MODIFY_SAVED_TRACES_SEARCH", "MODIFY_OWN_ONBOARDING_STATE", "MODIFY_APPLICATIONS", "INGESTION_POLICY_MANAGEMENT", "SECURITY_POLICY_MANAGEMENT", "MODIFY_SAML_SSO_SETTINGS", "METRIC_INGESTION", "METRIC_INGESTION_LISTENER", "LOGIN", "LOGOUT", "CHANGE_PASSWORD", "SEND_FORGOTTEN_PASSWORD_EMAILS", "CHANGE_USER_PREFERENCE", "CREATE_TOKEN", "REVOKE_ALL_SESSIONS", "REVOKE_ALL_TOKENS", "REVOKE_TOKEN", "GET_TOKENS", "GET_ALL_ACCOUNTS", "GET_ALL_USERS", "GET_ALL_SERVICE_ACCOUNTS", "ADMINISTER_GROUPS", "DELETE_ACCOUNT", "INVITE_USER", "ADMINISTER_SERVICE_ACCOUNTS", "NO_REAUTH_INVITE_USER", "ADMINISTER_USER_GROUPS", "ADMINISTER_ALL_TOKENS", "ADMINISTER_CUSTOMER_PREFERENCES", "ROLES_MANAGEMENT", "VIEW_CUSTOMERS", "MODIFY_CUSTOMER", "DELETE_CUSTOMER", "SEND_UI_METRICS", "UPGRADE_CUSTOMER", "TOKEN"]  # noqa: E501
         if (self._configuration.client_side_validation and
                 not set(response).issubset(set(allowed_values))):  # noqa: E501
             raise ValueError(

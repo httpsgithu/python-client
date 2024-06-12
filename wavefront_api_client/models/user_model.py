@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Wavefront REST API Documentation
+    Tanzu Observability REST API Documentation
 
-    <p>The Wavefront REST API enables you to interact with Wavefront servers using standard REST API tools. You can use the REST API to automate commonly executed operations such as automatically tagging sources.</p><p>When you make REST API calls outside the Wavefront REST API documentation you must add the header \"Authorization: Bearer &lt;&lt;API-TOKEN&gt;&gt;\" to your HTTP requests.</p>  # noqa: E501
+    <p>The REST API enables you to interact with the Tanzu Observability service by using standard REST API tools. You can use the REST API to automate commonly executed operations, for example to tag sources automatically.</p><p>When you make REST API calls outside the REST API documentation UI, to authenticate to the service, you must use an API token associated with a user account or a service account. For information on how to get the API token and examples, see <a href=\"http://docs.wavefront.com/using_wavefront_api.html\">Use the Tanzu Observability REST API.</a></p>  # noqa: E501
 
     OpenAPI spec version: v2
     Contact: chitimba@wavefront.com
@@ -36,8 +36,6 @@ class UserModel(object):
         'customer': 'str',
         'groups': 'list[str]',
         'identifier': 'str',
-        'ingestion_policies': 'list[IngestionPolicy]',
-        'ingestion_policy': 'IngestionPolicy',
         'last_successful_login': 'int',
         'roles': 'list[RoleDTO]',
         'sso_id': 'str',
@@ -48,15 +46,13 @@ class UserModel(object):
         'customer': 'customer',
         'groups': 'groups',
         'identifier': 'identifier',
-        'ingestion_policies': 'ingestionPolicies',
-        'ingestion_policy': 'ingestionPolicy',
         'last_successful_login': 'lastSuccessfulLogin',
         'roles': 'roles',
         'sso_id': 'ssoId',
         'user_groups': 'userGroups'
     }
 
-    def __init__(self, customer=None, groups=None, identifier=None, ingestion_policies=None, ingestion_policy=None, last_successful_login=None, roles=None, sso_id=None, user_groups=None, _configuration=None):  # noqa: E501
+    def __init__(self, customer=None, groups=None, identifier=None, last_successful_login=None, roles=None, sso_id=None, user_groups=None, _configuration=None):  # noqa: E501
         """UserModel - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -65,8 +61,6 @@ class UserModel(object):
         self._customer = None
         self._groups = None
         self._identifier = None
-        self._ingestion_policies = None
-        self._ingestion_policy = None
         self._last_successful_login = None
         self._roles = None
         self._sso_id = None
@@ -76,10 +70,6 @@ class UserModel(object):
         self.customer = customer
         self.groups = groups
         self.identifier = identifier
-        if ingestion_policies is not None:
-            self.ingestion_policies = ingestion_policies
-        if ingestion_policy is not None:
-            self.ingestion_policy = ingestion_policy
         if last_successful_login is not None:
             self.last_successful_login = last_successful_login
         if roles is not None:
@@ -162,48 +152,6 @@ class UserModel(object):
             raise ValueError("Invalid value for `identifier`, must not be `None`")  # noqa: E501
 
         self._identifier = identifier
-
-    @property
-    def ingestion_policies(self):
-        """Gets the ingestion_policies of this UserModel.  # noqa: E501
-
-
-        :return: The ingestion_policies of this UserModel.  # noqa: E501
-        :rtype: list[IngestionPolicy]
-        """
-        return self._ingestion_policies
-
-    @ingestion_policies.setter
-    def ingestion_policies(self, ingestion_policies):
-        """Sets the ingestion_policies of this UserModel.
-
-
-        :param ingestion_policies: The ingestion_policies of this UserModel.  # noqa: E501
-        :type: list[IngestionPolicy]
-        """
-
-        self._ingestion_policies = ingestion_policies
-
-    @property
-    def ingestion_policy(self):
-        """Gets the ingestion_policy of this UserModel.  # noqa: E501
-
-
-        :return: The ingestion_policy of this UserModel.  # noqa: E501
-        :rtype: IngestionPolicy
-        """
-        return self._ingestion_policy
-
-    @ingestion_policy.setter
-    def ingestion_policy(self, ingestion_policy):
-        """Sets the ingestion_policy of this UserModel.
-
-
-        :param ingestion_policy: The ingestion_policy of this UserModel.  # noqa: E501
-        :type: IngestionPolicy
-        """
-
-        self._ingestion_policy = ingestion_policy
 
     @property
     def last_successful_login(self):

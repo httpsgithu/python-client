@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Wavefront REST API Documentation
+    Tanzu Observability REST API Documentation
 
-    <p>The Wavefront REST API enables you to interact with Wavefront servers using standard REST API tools. You can use the REST API to automate commonly executed operations such as automatically tagging sources.</p><p>When you make REST API calls outside the Wavefront REST API documentation you must add the header \"Authorization: Bearer &lt;&lt;API-TOKEN&gt;&gt;\" to your HTTP requests.</p>  # noqa: E501
+    <p>The REST API enables you to interact with the Tanzu Observability service by using standard REST API tools. You can use the REST API to automate commonly executed operations, for example to tag sources automatically.</p><p>When you make REST API calls outside the REST API documentation UI, to authenticate to the service, you must use an API token associated with a user account or a service account. For information on how to get the API token and examples, see <a href=\"http://docs.wavefront.com/using_wavefront_api.html\">Use the Tanzu Observability REST API.</a></p>  # noqa: E501
 
     OpenAPI spec version: v2
     Contact: chitimba@wavefront.com
@@ -36,8 +36,10 @@ class GCPConfiguration(object):
         'categories_to_fetch': 'list[str]',
         'custom_metric_prefix': 'list[str]',
         'disable_delta_counts': 'bool',
+        'disable_histogram': 'bool',
         'disable_histogram_to_metric_conversion': 'bool',
         'gcp_json_key': 'str',
+        'histogram_grouping_function': 'list[str]',
         'metric_filter_regex': 'str',
         'project_id': 'str'
     }
@@ -46,13 +48,15 @@ class GCPConfiguration(object):
         'categories_to_fetch': 'categoriesToFetch',
         'custom_metric_prefix': 'customMetricPrefix',
         'disable_delta_counts': 'disableDeltaCounts',
+        'disable_histogram': 'disableHistogram',
         'disable_histogram_to_metric_conversion': 'disableHistogramToMetricConversion',
         'gcp_json_key': 'gcpJsonKey',
+        'histogram_grouping_function': 'histogramGroupingFunction',
         'metric_filter_regex': 'metricFilterRegex',
         'project_id': 'projectId'
     }
 
-    def __init__(self, categories_to_fetch=None, custom_metric_prefix=None, disable_delta_counts=None, disable_histogram_to_metric_conversion=None, gcp_json_key=None, metric_filter_regex=None, project_id=None, _configuration=None):  # noqa: E501
+    def __init__(self, categories_to_fetch=None, custom_metric_prefix=None, disable_delta_counts=None, disable_histogram=None, disable_histogram_to_metric_conversion=None, gcp_json_key=None, histogram_grouping_function=None, metric_filter_regex=None, project_id=None, _configuration=None):  # noqa: E501
         """GCPConfiguration - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -61,8 +65,10 @@ class GCPConfiguration(object):
         self._categories_to_fetch = None
         self._custom_metric_prefix = None
         self._disable_delta_counts = None
+        self._disable_histogram = None
         self._disable_histogram_to_metric_conversion = None
         self._gcp_json_key = None
+        self._histogram_grouping_function = None
         self._metric_filter_regex = None
         self._project_id = None
         self.discriminator = None
@@ -73,9 +79,13 @@ class GCPConfiguration(object):
             self.custom_metric_prefix = custom_metric_prefix
         if disable_delta_counts is not None:
             self.disable_delta_counts = disable_delta_counts
+        if disable_histogram is not None:
+            self.disable_histogram = disable_histogram
         if disable_histogram_to_metric_conversion is not None:
             self.disable_histogram_to_metric_conversion = disable_histogram_to_metric_conversion
         self.gcp_json_key = gcp_json_key
+        if histogram_grouping_function is not None:
+            self.histogram_grouping_function = histogram_grouping_function
         if metric_filter_regex is not None:
             self.metric_filter_regex = metric_filter_regex
         self.project_id = project_id
@@ -100,7 +110,7 @@ class GCPConfiguration(object):
         :param categories_to_fetch: The categories_to_fetch of this GCPConfiguration.  # noqa: E501
         :type: list[str]
         """
-        allowed_values = ["APPENGINE", "BIGQUERY", "BIGTABLE", "CLOUDFUNCTIONS", "CLOUDIOT", "CLOUDSQL", "CLOUDTASKS", "COMPUTE", "CONTAINER", "DATAFLOW", "DATAPROC", "DATASTORE", "FIREBASEDATABASE", "FIREBASEHOSTING", "FIRESTORE", "INTERCONNECT", "KUBERNETES", "LOADBALANCING", "LOGGING", "ML", "MONITORING", "PUBSUB", "REDIS", "ROUTER", "SERVICERUNTIME", "SPANNER", "STORAGE", "TPU", "VPN", "APIGEE"]  # noqa: E501
+        allowed_values = ["APPENGINE", "BIGQUERY", "BIGTABLE", "CLOUDFUNCTIONS", "CLOUDIOT", "CLOUDSQL", "CLOUDTASKS", "COMPUTE", "CONTAINER", "DATAFLOW", "DATAPROC", "DATASTORE", "FIREBASEDATABASE", "FIREBASEHOSTING", "FIRESTORE", "INTERCONNECT", "KUBERNETES", "LOADBALANCING", "LOGGING", "ML", "MONITORING", "PUBSUB", "REDIS", "ROUTER", "RUN", "SERVICERUNTIME", "SPANNER", "STORAGE", "TPU", "VPN", "APIGEE"]  # noqa: E501
         if (self._configuration.client_side_validation and
                 not set(categories_to_fetch).issubset(set(allowed_values))):  # noqa: E501
             raise ValueError(
@@ -158,6 +168,29 @@ class GCPConfiguration(object):
         self._disable_delta_counts = disable_delta_counts
 
     @property
+    def disable_histogram(self):
+        """Gets the disable_histogram of this GCPConfiguration.  # noqa: E501
+
+        Whether to disable the ingestion of histograms. Ingestion is enabled by default.  # noqa: E501
+
+        :return: The disable_histogram of this GCPConfiguration.  # noqa: E501
+        :rtype: bool
+        """
+        return self._disable_histogram
+
+    @disable_histogram.setter
+    def disable_histogram(self, disable_histogram):
+        """Sets the disable_histogram of this GCPConfiguration.
+
+        Whether to disable the ingestion of histograms. Ingestion is enabled by default.  # noqa: E501
+
+        :param disable_histogram: The disable_histogram of this GCPConfiguration.  # noqa: E501
+        :type: bool
+        """
+
+        self._disable_histogram = disable_histogram
+
+    @property
     def disable_histogram_to_metric_conversion(self):
         """Gets the disable_histogram_to_metric_conversion of this GCPConfiguration.  # noqa: E501
 
@@ -204,6 +237,29 @@ class GCPConfiguration(object):
             raise ValueError("Invalid value for `gcp_json_key`, must not be `None`")  # noqa: E501
 
         self._gcp_json_key = gcp_json_key
+
+    @property
+    def histogram_grouping_function(self):
+        """Gets the histogram_grouping_function of this GCPConfiguration.  # noqa: E501
+
+        List of histogram grouping function to fetch data from  # noqa: E501
+
+        :return: The histogram_grouping_function of this GCPConfiguration.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._histogram_grouping_function
+
+    @histogram_grouping_function.setter
+    def histogram_grouping_function(self, histogram_grouping_function):
+        """Sets the histogram_grouping_function of this GCPConfiguration.
+
+        List of histogram grouping function to fetch data from  # noqa: E501
+
+        :param histogram_grouping_function: The histogram_grouping_function of this GCPConfiguration.  # noqa: E501
+        :type: list[str]
+        """
+
+        self._histogram_grouping_function = histogram_grouping_function
 
     @property
     def metric_filter_regex(self):

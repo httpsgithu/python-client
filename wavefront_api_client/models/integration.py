@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Wavefront REST API Documentation
+    Tanzu Observability REST API Documentation
 
-    <p>The Wavefront REST API enables you to interact with Wavefront servers using standard REST API tools. You can use the REST API to automate commonly executed operations such as automatically tagging sources.</p><p>When you make REST API calls outside the Wavefront REST API documentation you must add the header \"Authorization: Bearer &lt;&lt;API-TOKEN&gt;&gt;\" to your HTTP requests.</p>  # noqa: E501
+    <p>The REST API enables you to interact with the Tanzu Observability service by using standard REST API tools. You can use the REST API to automate commonly executed operations, for example to tag sources automatically.</p><p>When you make REST API calls outside the REST API documentation UI, to authenticate to the service, you must use an API token associated with a user account or a service account. For information on how to get the API token and examples, see <a href=\"http://docs.wavefront.com/using_wavefront_api.html\">Use the Tanzu Observability REST API.</a></p>  # noqa: E501
 
     OpenAPI spec version: v2
     Contact: chitimba@wavefront.com
@@ -51,6 +51,7 @@ class Integration(object):
         'name': 'str',
         'overview': 'str',
         'setup': 'str',
+        'setups': 'list[Setup]',
         'status': 'IntegrationStatus',
         'updated_epoch_millis': 'int',
         'updater_id': 'str',
@@ -76,13 +77,14 @@ class Integration(object):
         'name': 'name',
         'overview': 'overview',
         'setup': 'setup',
+        'setups': 'setups',
         'status': 'status',
         'updated_epoch_millis': 'updatedEpochMillis',
         'updater_id': 'updaterId',
         'version': 'version'
     }
 
-    def __init__(self, alerts=None, alias_integrations=None, alias_of=None, base_url=None, created_epoch_millis=None, creator_id=None, dashboards=None, deleted=None, description=None, have_metric_dropdown=None, hidden=None, icon=None, id=None, metrics=None, metrics_docs=None, name=None, overview=None, setup=None, status=None, updated_epoch_millis=None, updater_id=None, version=None, _configuration=None):  # noqa: E501
+    def __init__(self, alerts=None, alias_integrations=None, alias_of=None, base_url=None, created_epoch_millis=None, creator_id=None, dashboards=None, deleted=None, description=None, have_metric_dropdown=None, hidden=None, icon=None, id=None, metrics=None, metrics_docs=None, name=None, overview=None, setup=None, setups=None, status=None, updated_epoch_millis=None, updater_id=None, version=None, _configuration=None):  # noqa: E501
         """Integration - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -106,6 +108,7 @@ class Integration(object):
         self._name = None
         self._overview = None
         self._setup = None
+        self._setups = None
         self._status = None
         self._updated_epoch_millis = None
         self._updater_id = None
@@ -143,6 +146,8 @@ class Integration(object):
             self.overview = overview
         if setup is not None:
             self.setup = setup
+        if setups is not None:
+            self.setups = setups
         if status is not None:
             self.status = status
         if updated_epoch_millis is not None:
@@ -564,6 +569,29 @@ class Integration(object):
         """
 
         self._setup = setup
+
+    @property
+    def setups(self):
+        """Gets the setups of this Integration.  # noqa: E501
+
+        A list of setup belonging to this integration  # noqa: E501
+
+        :return: The setups of this Integration.  # noqa: E501
+        :rtype: list[Setup]
+        """
+        return self._setups
+
+    @setups.setter
+    def setups(self, setups):
+        """Sets the setups of this Integration.
+
+        A list of setup belonging to this integration  # noqa: E501
+
+        :param setups: The setups of this Integration.  # noqa: E501
+        :type: list[Setup]
+        """
+
+        self._setups = setups
 
     @property
     def status(self):

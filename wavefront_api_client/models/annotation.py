@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Wavefront REST API Documentation
+    Tanzu Observability REST API Documentation
 
-    <p>The Wavefront REST API enables you to interact with Wavefront servers using standard REST API tools. You can use the REST API to automate commonly executed operations such as automatically tagging sources.</p><p>When you make REST API calls outside the Wavefront REST API documentation you must add the header \"Authorization: Bearer &lt;&lt;API-TOKEN&gt;&gt;\" to your HTTP requests.</p>  # noqa: E501
+    <p>The REST API enables you to interact with the Tanzu Observability service by using standard REST API tools. You can use the REST API to automate commonly executed operations, for example to tag sources automatically.</p><p>When you make REST API calls outside the REST API documentation UI, to authenticate to the service, you must use an API token associated with a user account or a service account. For information on how to get the API token and examples, see <a href=\"http://docs.wavefront.com/using_wavefront_api.html\">Use the Tanzu Observability REST API.</a></p>  # noqa: E501
 
     OpenAPI spec version: v2
     Contact: chitimba@wavefront.com
@@ -33,17 +33,71 @@ class Annotation(object):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'key': 'str',
+        'value': 'str'
     }
 
     attribute_map = {
+        'key': 'key',
+        'value': 'value'
     }
 
-    def __init__(self, _configuration=None):  # noqa: E501
+    def __init__(self, key=None, value=None, _configuration=None):  # noqa: E501
         """Annotation - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
         self._configuration = _configuration
+
+        self._key = None
+        self._value = None
         self.discriminator = None
+
+        if key is not None:
+            self.key = key
+        if value is not None:
+            self.value = value
+
+    @property
+    def key(self):
+        """Gets the key of this Annotation.  # noqa: E501
+
+
+        :return: The key of this Annotation.  # noqa: E501
+        :rtype: str
+        """
+        return self._key
+
+    @key.setter
+    def key(self, key):
+        """Sets the key of this Annotation.
+
+
+        :param key: The key of this Annotation.  # noqa: E501
+        :type: str
+        """
+
+        self._key = key
+
+    @property
+    def value(self):
+        """Gets the value of this Annotation.  # noqa: E501
+
+
+        :return: The value of this Annotation.  # noqa: E501
+        :rtype: str
+        """
+        return self._value
+
+    @value.setter
+    def value(self, value):
+        """Sets the value of this Annotation.
+
+
+        :param value: The value of this Annotation.  # noqa: E501
+        :type: str
+        """
+
+        self._value = value
 
     def to_dict(self):
         """Returns the model properties as a dict"""
